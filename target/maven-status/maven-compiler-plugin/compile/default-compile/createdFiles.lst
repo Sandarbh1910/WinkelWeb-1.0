@@ -1,0 +1,6 @@
+WinkelWeb_POJO\CategoryPOJO.class
+WinkelWeb_POJO\MerchantCredentialsPOJO.class
+WinkelWeb_POJO\UserCredentialsPOJO.class
+WinkelWeb_POJO\ProductsPOJO.class
+WinkelWeb_DBUTIL\DBConnection.class
+com\mycompany\winkelweb\CustomerRegistrationServlet.class
