@@ -1,4 +1,64 @@
 
+
+ 
+            /*Customer.jsp code starts here*/
+            
+            
+body{
+    background-color: #fff;
+    height:100%;
+    min-width:260px;
+    min-height: 100vh;
+}
+            
+main{
+    position:absolute;
+    top:120px;
+    width:100vw;
+    min-height: 100vh;
+}
+
+
+
+
+
+
+@media only screen and (max-width:701px)
+{
+    main{
+        position:absolute;
+        top:180px;
+    }
+}
+
+
+@media only screen and (max-width:515px)
+{
+    main{
+        position:absolute;
+        top:235px;
+    }
+}
+
+
+
+@media only screen and (max-width:407px)
+{
+    main{
+        position:absolute;
+        top:285px;
+    }
+}
+            
+            
+            /*Customer.jsp code ends here*/
+
+
+
+
+
+
+
 /*Navbar Code starts here*/
             
             
@@ -334,3 +394,6 @@ a{
             
             
             /*Sidebar Code ends here*/
+
+            
+           
