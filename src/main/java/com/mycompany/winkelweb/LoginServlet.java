@@ -45,7 +45,7 @@ public class LoginServlet extends HttpServlet {
            
           UserCredentialsPOJO user= UserDAO.authenticateUser(mob,password);
            
-            System.out.println("In ogin serv user="+user);
+            System.out.println("In Login serv user="+user);
           if(user!=null)
           {
               String utype=user.getUser_type();

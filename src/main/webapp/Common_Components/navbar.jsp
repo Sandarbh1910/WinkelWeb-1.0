@@ -17,8 +17,8 @@
 }
 
 a{
-    text-decoration: none;
-    color:black;
+    text-decoration: none !important;
+    color:black !important;
 }
 
 nav{
@@ -215,11 +215,10 @@ nav{
 
 .customer-modal-black-screen{
     width:100vw;
-    height:100vh;
+    height:100vmax;
     position:absolute;
     top:0;
-    background-color: black;
-    opacity:0.8;
+    background-color: rgba(0,0,0,0.8);
     display:none;
     z-index:5;
 }
@@ -323,14 +322,15 @@ border:0px;
 
 .login-modal-black-screen{
     width:100vw;
-    height:100vh;
+    height:100vmax;
     position:absolute;
     top:0;
-    background-color: black;
-    opacity:0.8;
+    background-color: rgba(0,0,0,0.8);
     display:none;
     z-index:5;
 }
+
+
 
 
 
@@ -344,6 +344,7 @@ border:0px;
     position:relative;
     top:180px;
     border-radius: 3px;
+    opacity:1;
     
 }
 
@@ -409,7 +410,7 @@ border:0px;
     </nav>
 
     <div class="below-bar">
-        <label for="sideclosecheckbox" style="z-index: 10;cursor:pointer;width:30px;height:30px;border:1px solid black;" ><img src="./Icons/hamburger-icon.svg" alt=""  /></label>
+        <label for="sideclosecheckbox" style="z-index: 10;cursor:pointer;width:30px;height:30px;" ><img src="./Icons/hamburger-icon.svg" alt=""  /></label>
     </div>
 
     <!-- Customer Register Modal Code Begins -->
@@ -430,8 +431,8 @@ border:0px;
                     <input type="email" placeholder="Email" name="cremail" class="signup-input" id="signup-email" />
                     <input type="tel" placeholder="Mob" name="crmob" class="signup-input" id="signup-mob" />
                     <input type="date" placeholder="DOB" name="crdob" class="signup-input" id="signup-dob" />
-                    <textarea id="" rows="8" name="craddress" placeholder="Address" class="signup-input" id=""
-                        style="resize: none; max-width: 98%; width: 98%"></textarea>
+                    <textarea  name="craddress" placeholder="Address" class="signup-input" id="craddress-txt-area"
+                        style="resize: none; max-width: 98%; width: 98%;height:100px;min-height: 50px;"></textarea>
 
                     <!--Merchant Modal button-->
                     <a href="merchantregister.jsp"

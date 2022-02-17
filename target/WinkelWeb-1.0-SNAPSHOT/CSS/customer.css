@@ -1,0 +1,336 @@
+
+/*Navbar Code starts here*/
+            
+            
+nav{
+    background-color: #212529;
+    padding:15px;
+    display:flex;
+    flex-wrap: wrap;
+    align-items: center;
+    min-width:250px;
+    
+    
+}
+
+.logo{
+    color:white;
+    font-size: 25px;
+}
+
+.category{
+    color:#939a97;
+    margin-left:20px;
+    margin-right: 10px;
+}
+
+.categorylist{
+    list-style-type: none;
+    border:2px solid #e1e1e2;
+    border-radius: 5px;
+    background-color: #ffffff;
+    padding:10px 0px;
+    min-width:160px;
+    position:absolute;
+    top:50px;
+    left:200px;
+    display:none;
+    z-index:6;
+    
+}
+
+.categorylistitem{
+    padding:10px;
+}
+.categorylistitem a{
+    width:100%;
+}
+.categorylistitem:hover{
+    background-color: #e1e1e2;
+    border-radius:4px;
+}
+#nav-category-checkbox{
+    display:none;
+}
+
+
+#nav-category-checkbox:checked ~ .categorylist{
+    display:block;
+}
+
+.search{
+    display: inline-block;
+    margin-left:auto;
+    margin-right: 10px;
+    min-width: 250px;
+}
+
+.searchbar{
+    padding:10px;
+    border-radius: 5px;
+    min-width:200px;
+}
+
+.searchbtn{
+    padding:10px;
+    border-radius: 4px;
+    border:1px solid #198754;
+    color:#198754;
+    background-color:#212529 ;
+}
+
+.searchbtn:hover{
+    background-color: #198754;
+    color:white;
+}
+
+
+
+.acc-btns{
+    display:inline-block;
+}
+
+
+.below-bar{
+    background-color: #f8f9fa;
+    padding:10px;
+    z-index:5;
+}
+
+.signup-btn,.login-btn,.logout-btn{
+    text-decoration: none;
+}
+
+.signup-btn,.login-btn{
+    border: 1px solid #515f6b;
+    color:#515f6b;
+    padding:10px;
+    border-radius: 4px;
+}
+
+.signup-btn:hover,.login-btn:hover{
+    background-color: #515f6b;
+    color:white;
+}
+
+.logout-btn{
+    color:red;
+    border:1px solid red;
+    padding:10px;
+    border-radius: 4px;
+}
+
+.logout-btn:hover{
+    background-color: red;
+    color:white;
+}
+
+
+
+@media only screen and (max-width:654px)
+{
+    .acc-btns{
+        margin-top: 10px;
+    }
+}
+
+
+@media only screen and (max-width:515px)
+{
+    .search{
+        width:100%;
+    }
+
+    .searchbar{
+        width:80%;
+    }
+
+    .acc-btns{
+        margin-top: 20px;
+    }
+
+    .category{
+        display:none;
+    }
+
+    .categorylist{
+        display:none !important;
+    }
+
+}
+
+
+
+
+
+/*Navbar Code ends here*/ 
+
+
+
+
+
+
+/*Siderbar code starts here*/
+            
+            
+
+*{
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+
+}
+
+a{
+    text-decoration:none;
+    color:black;
+}
+
+.myoffcanvas{
+    height:100vh;
+    width:25vw;
+    min-width: 250px;
+    background-color: aqua;
+    z-index: 20000000;
+    position:fixed;
+    top:0;
+    left:-100%;
+    transition-duration: .6s;
+    
+    
+}
+
+
+.sidebar{
+    padding:15px;
+    background-color: #f8f9fa;
+    width:100%;
+    height: 100%;
+}
+
+.sidehead{
+    padding:15px;
+}
+
+
+.sideclosebtn{
+    width:25px;
+    height:25px;
+}
+.greeting{
+    padding:15px;
+    text-align: center;
+    font-size: 30px;
+    font-family: 'KoHo', sans-serif;
+    
+    
+}
+
+@media only screen and (max-width:1500px) {
+
+.greeting{
+    font-size:20px ;
+    font-weight: bolder;
+}
+    
+}
+
+.sidemain{
+    height:75%;
+}
+
+.sidelist{
+    list-style-type: none;
+    padding:20px 0px;
+}
+
+.sidelistitem{
+    font-size: large;
+    padding:10px 30px;
+
+}
+
+.sidelistitem:active{
+    background-color: #0d6efd;
+    color:white;
+}
+
+.sidelistitem:hover{
+    background-color: #ffffff;
+    border-radius:5px;
+}
+
+#sideclosecheckbox{
+    display:none;
+}
+
+#sideclosecheckbox:checked ~ .myoffcanvas{
+    left:0;
+}
+
+.sidefooter{
+   
+   height: 60px;
+   padding:10px;
+}
+
+.sidebardp{
+    background-color: aqua;
+    border-radius: 50%;
+    width:50px;
+    height:50px;
+    padding:5px;
+    text-align: center;
+    object-fit:contain;
+}
+
+.sidebarusername{
+   
+    padding:5px;
+    text-align: center;
+    font-family: 'Paytone One', sans-serif;
+    position:relative;
+    bottom:20px;
+
+}
+
+
+
+.sideuserlist{
+   position:relative;
+   bottom:180px;
+   left:50px;
+    max-width: 120px;
+    border:2px solid #e1e1e2;
+    border-radius: 5px;
+    background-color: #ffffff;
+    padding:10px 0px;
+    min-width:160px;
+    display: none;
+    
+}
+
+.sideuserlist ul{
+    list-style-type: none;
+}
+
+.sideuserlistitem{
+    padding:8px;
+}
+
+.sideuserlistitem:hover{
+    background-color: #e1e1e2;
+}
+
+#sidebarusercheckbox{
+    display:none;
+}
+#sidebarusercheckbox:checked ~ .sideuserlist{
+    display: block;
+}
+
+
+            
+            
+            
+            /*Sidebar Code ends here*/
