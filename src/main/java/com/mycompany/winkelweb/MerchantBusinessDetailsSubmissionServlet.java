@@ -5,8 +5,8 @@
  */
 package com.mycompany.winkelweb;
 
-import WinkelWeb_DAO.MerchantBusinessDetailsSubmissionDAO;
-import WinkelWeb_DAO.UserDAO;
+import Helper.Validation;
+import WinkelWeb_DAO.MerchantDAO;
 import WinkelWeb_POJO.UserCredentialsPOJO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -41,21 +41,29 @@ public class MerchantBusinessDetailsSubmissionServlet extends HttpServlet {
         String gstno=request.getParameter("mrgstnumber");
         String accno=request.getParameter("mraccnumber");
         String ifsccode=request.getParameter("mrifsccode");
-        String email=request.getParameter("mremail");
         String firmaddress=request.getParameter("mrfirmaddress");
         
+        UserCredentialsPOJO merchant=(UserCredentialsPOJO)httpsess.getAttribute("merchant_details");
+        httpsess.removeAttribute("merchant_details");
+        if(!Validation.merchantBusinessDataEmptyValidation(firmname, gstno, accno, ifsccode, firmaddress))
+        {
+            httpsess.setAttribute("message", "Fields cannot be left empty.");
+            httpsess.setAttribute("dcol","1");
+            response.sendRedirect("merchantregister.jsp");
+            return;
+        }
         
-        String res=MerchantBusinessDetailsSubmissionDAO.submitBusinessDetails(firmname, gstno, accno, ifsccode, email, firmaddress);
-        System.out.println("Reached servlet merchant register");
+        String res=MerchantDAO.registerMerchant(merchant,firmname, gstno, accno, ifsccode, firmaddress);
+        System.out.println("Reached servlet merchant business details submit ");
         if(res.equalsIgnoreCase("Registration Successful"))
         {
             httpsess.setAttribute("message",res);
             httpsess.setAttribute("dcol","2");
-             response.sendRedirect("merchant_business_details.jsp");
+             response.sendRedirect("index.jsp");
             
             
         }
-        else if(res.equalsIgnoreCase("Mobile/Email already exists")){
+        else if(res.equalsIgnoreCase("Mobile/GST number already exists")){
             httpsess.setAttribute("message",res);
             httpsess.setAttribute("dcol","1");
              response.sendRedirect("merchantregister.jsp");

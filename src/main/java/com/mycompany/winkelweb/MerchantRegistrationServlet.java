@@ -5,6 +5,7 @@
  */
 package com.mycompany.winkelweb;
 
+import Helper.Validation;
 import WinkelWeb_DAO.UserDAO;
 import WinkelWeb_POJO.UserCredentialsPOJO;
 import java.io.IOException;
@@ -42,30 +43,29 @@ public class MerchantRegistrationServlet extends HttpServlet {
         String email=request.getParameter("mremail");
         String password=request.getParameter("mrpassword");
         String address=request.getParameter("mraddress");
-        UserCredentialsPOJO user=new UserCredentialsPOJO(firstname,lastname,mob,dob,email,password,address,"merchant");
-        System.out.println(user);
-        String res=UserDAO.customerRegister(user);
-        System.out.println("Reached servlet merchant register");
-        if(res.equalsIgnoreCase("Registration Successful"))
+        UserCredentialsPOJO merchant=new UserCredentialsPOJO(firstname,lastname,mob,dob,email,password,address,"merchant");
+        if(!Validation.registrationDataEmptyValidation(merchant))
         {
-            httpsess.setAttribute("message",res);
-            httpsess.setAttribute("dcol","2");
-             response.sendRedirect("merchant_business_details.jsp");
             
-            
+        httpsess.setAttribute("message","Fields cannot be empty!");
+        httpsess.setAttribute("dcol","1");
+        response.sendRedirect("merchantregister.jsp");
+        return;
         }
-        else if(res.equalsIgnoreCase("Mobile/Email already exists")){
-            httpsess.setAttribute("message",res);
-            httpsess.setAttribute("dcol","1");
-             response.sendRedirect("merchantregister.jsp");
-            
-            
+        
+        if(!Validation.passwordValidation(password))
+        {
+             httpsess.setAttribute("message","Weak Password! Password should contain A-Z ,a-z ,0-9 and Special characters like ! ,@ ,# ,$ ,% ,^ ,& ,* ,( ,) ,_ ,? ");
+        httpsess.setAttribute("dcol","1");
+        response.sendRedirect("merchantregister.jsp");
+            return;
         }
-        else{
-             httpsess.setAttribute("message",res);
-            httpsess.setAttribute("dcol","0");
-            response.sendRedirect("merchantregister.jsp");
-        }
+        System.out.println(merchant);
+        
+        httpsess.setAttribute("merchant_details", merchant);
+        response.sendRedirect("merchant_business_details.jsp");
+        System.out.println("Reached servlet merchant register");
+        
         
         
     }

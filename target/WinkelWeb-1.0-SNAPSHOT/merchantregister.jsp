@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="CSS/merchantregister.css">
 </head>
 <body>
-
+    <%@include file="Common_Components/message.jsp" %>
     <div class="brand-bar">
         WinkelWeb
     </div>

@@ -1,6 +1,7 @@
 
 package com.mycompany.winkelweb;
 
+import Helper.Validation;
 import WinkelWeb_DAO.UserDAO;
 import WinkelWeb_POJO.UserCredentialsPOJO;
 import java.io.IOException;
@@ -34,15 +35,15 @@ public class LoginServlet extends HttpServlet {
            
             String mob=request.getParameter("logmob");
             String password=request.getParameter("logpassword");
-             if(mob.equals("")&&password.equals(""))
-           {
-               httpsess.setAttribute("message","Fields cannot be left blank!!");
+            System.out.println("mob="+mob+",pass="+password+",");
+           if(!Validation.loginDataEmptyValidation(mob, password))
+                   {
+                       System.out.println("Login servlet : login false");
+                        httpsess.setAttribute("message","Fields cannot be left blank!!");
                httpsess.setAttribute("dcol", "1");
                response.sendRedirect("index.jsp");
                return;
-               
-           }
-           
+                   }
           UserCredentialsPOJO user= UserDAO.authenticateUser(mob,password);
            
             System.out.println("In Login serv user="+user);
