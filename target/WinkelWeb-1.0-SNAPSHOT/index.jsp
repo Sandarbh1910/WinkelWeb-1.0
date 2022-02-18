@@ -74,12 +74,13 @@
                     <input type="email" placeholder="Email" name="cremail" class="signup-input" id="signup-email" />
                     <input type="tel" placeholder="Mob" name="crmob" class="signup-input" id="signup-mob" />
                     <input type="date" placeholder="DOB" name="crdob" class="signup-input" id="signup-dob" />
+                    <input type="password" placeholder="Password" name="crpassword" class="signup-input" id="signup-password" />
                     <textarea  name="craddress" placeholder="Address" class="signup-input" id="craddress-txt-area"
                         style="resize: none; max-width: 98%; width: 98%;height:100px;min-height: 50px;"></textarea>
 
                     <!--Merchant Modal button-->
                     <a href="merchantregister.jsp"
-                        style="color: blue; text-decoration: underline; cursor: pointer">Business user</a>
+                        style="color: blue !important; text-decoration: underline !important; cursor: pointer">Business user</a>
 
                     <div class="terms">
                         <input type="checkbox" id="check"

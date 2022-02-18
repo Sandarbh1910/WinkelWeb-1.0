@@ -315,7 +315,7 @@ nav{
 
 .customer-register-modal{
     min-width:250px;
-    max-width:32vw;
+    max-width:33vw;
     min-height: 85vh;
     background-color: white;
     margin:auto;
@@ -389,15 +389,22 @@ border:0px;
 }
 
 #signup-email,#signup-mob,#signup-password{
-    width:93%;
+    width:100%;
 }
 
+#signup-firstname,#signup-lastname{
+    width:49%;
+}
 
 @media only screen and (max-width:1228px)
 {
     .signup-input{
         width:100%;
     }
+    
+    #signup-firstname,#signup-lastname{
+    width:100%;
+}
 }
 
 #register-modal-checkbox:checked ~ .customer-modal-black-screen{
@@ -492,7 +499,7 @@ a{
 }
 
 .myoffcanvas{
-    height:100vh;
+    height:100%;
     width:25vw;
     min-width: 250px;
     background-color: aqua;
