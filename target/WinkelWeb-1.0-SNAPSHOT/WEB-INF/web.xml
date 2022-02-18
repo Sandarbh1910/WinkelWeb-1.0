@@ -12,6 +12,14 @@
         <servlet-name>LogoutServlet</servlet-name>
         <servlet-class>com.mycompany.winkelweb.LogoutServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>MerchantRegistrationServlet</servlet-name>
+        <servlet-class>com.mycompany.winkelweb.MerchantRegistrationServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MerchantBusinessDetailsSubmissionServlet</servlet-name>
+        <servlet-class>com.mycompany.winkelweb.MerchantBusinessDetailsSubmissionServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CustomerRegistrationServlet</servlet-name>
         <url-pattern>/CustomerRegistrationServlet</url-pattern>
@@ -23,6 +31,14 @@
     <servlet-mapping>
         <servlet-name>LogoutServlet</servlet-name>
         <url-pattern>/LogoutServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MerchantRegistrationServlet</servlet-name>
+        <url-pattern>/MerchantRegistrationServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MerchantBusinessDetailsSubmissionServlet</servlet-name>
+        <url-pattern>/MerchantBusinessDetailsSubmissionServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

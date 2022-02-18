@@ -83,8 +83,8 @@
                         style="color: blue !important; text-decoration: underline !important; cursor: pointer">Business user</a>
 
                     <div class="terms">
-                        <input type="checkbox" id="check"
-                            onchange="document.getElementById('signup-submit-btn').disabled = !this.checked;" />
+                        <input type="checkbox" id="signup-term-checkbox"
+                            onchange="enableSignupBtn()" />
                         <label for="check" id="lbl">I have read all the terms and I agree .
                         </label>
                         <hr />
@@ -100,6 +100,29 @@
             </div>
         </div>
     </div>
+    
+    
+    <script>
+        function enableSignupBtn()
+        {
+            let check=document.getElementById('signup-term-checkbox');
+            let btn=document.getElementById('signup-submit-btn');
+            
+            btn.disabled=!check.checked;
+            console.log('btn is'+btn.disabled);
+            
+            if(btn.disabled)
+            {
+                console.log('to light blue');
+                btn.style.backgroundColor='#5a9cfe';
+            }
+            else {
+                btn.style.backgroundColor='#0d6efd';
+                 console.log('to dark blue');
+            }
+    
+        }
+    </script>
 
     <!-- Customer Register Modal Code Ends -->
 
@@ -116,9 +139,9 @@
             <div class="login-modal-body modal-body">
                 <img src="" alt="" />
                 <form action="LoginServlet" class="login">
-                    <input type="tel" placeholder="Mob" name="logmob" class="signup-input" id="signup-mob" />
-                    <input type="password" placeholder="Password" name="logpassword" class="signup-input"
-                        id="signup-password" />
+                    <input type="tel" placeholder="Mob" name="logmob" class="login-input" id="login-mob" />
+                    <input type="password" placeholder="Password" name="logpassword" class="login-input"
+                        id="login-password" />
 
                     <div class="modal-footer">
                         <label id="close-login-modal-lbl"  for="login-modal-checkbox" >

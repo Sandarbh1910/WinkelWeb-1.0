@@ -338,6 +338,10 @@ nav{
     font-size: large;
 }
 
+.signup-input:focus{
+    box-shadow: 0px 0px 80px  10px #e1e1e2 ;
+}
+
 
 .close-customer-modal-btn{
     float:right;
@@ -348,6 +352,7 @@ nav{
     margin:auto;
     margin-top:15px;
     padding:10px;
+    border:2px solid #e1e1e2;
     border-radius:5px;
     min-width:150px;
     
@@ -380,7 +385,7 @@ top:1px;}
 
 #signup-submit-btn{
     padding:10px;
-background-color: #0d6efd;
+background-color: #5a9cfe;
 color:white;
 border-radius: 5px;
 margin-left:10px;
@@ -474,6 +479,31 @@ border:0px;
 {
     display:block;
 }
+
+
+.login-input{
+      margin:auto;
+    margin-top:15px;
+    padding:10px;
+    border:2px solid #e1e1e2;
+    border-radius:5px;
+    min-width:150px;
+}
+
+
+#login-mob,#login-password{
+    width:100%;
+}
+
+
+.login-input:focus{
+    box-shadow: 0px 0px 80px  10px #e1e1e2 ;
+    
+}
+
+
+
+
 /* Login modal code ends */
             
             
