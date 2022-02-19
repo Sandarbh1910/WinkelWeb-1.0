@@ -44,6 +44,7 @@ public class MerchantRegistrationServlet extends HttpServlet {
         String password=request.getParameter("mrpassword");
         String address=request.getParameter("mraddress");
         UserCredentialsPOJO merchant=new UserCredentialsPOJO(firstname,lastname,mob,dob,email,password,address,"merchant");
+//        Empty field validation
         if(!Validation.registrationDataEmptyValidation(merchant))
         {
             
@@ -52,10 +53,19 @@ public class MerchantRegistrationServlet extends HttpServlet {
         response.sendRedirect("merchantregister.jsp");
         return;
         }
-        
+        //        Mobile no validation
+         if(!Validation.mobValidation(mob))
+        {
+             httpsess.setAttribute("message","Invalid Mobile number");
+        httpsess.setAttribute("dcol","1");
+        response.sendRedirect("merchantregister.jsp");
+            return;
+        }
+         
+//         Password validation
         if(!Validation.passwordValidation(password))
         {
-             httpsess.setAttribute("message","Weak Password! Password should contain A-Z ,a-z ,0-9 and Special characters like ! ,@ ,# ,$ ,% ,^ ,& ,* ,( ,) ,_ ,? ");
+             httpsess.setAttribute("message","Weak Password! Password should contain minimum 8 characters including A-Z ,a-z ,0-9 and Special characters like ! ,@ ,# ,$ ,% ,^ ,& ,* ,( ,) ,_ ,? ");
         httpsess.setAttribute("dcol","1");
         response.sendRedirect("merchantregister.jsp");
             return;

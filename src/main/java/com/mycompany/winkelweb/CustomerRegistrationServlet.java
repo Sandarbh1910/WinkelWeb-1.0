@@ -54,6 +54,15 @@ public class CustomerRegistrationServlet extends HttpServlet {
         return;
         }
         
+//        Mobile no validation
+         if(!Validation.mobValidation(mob))
+        {
+             httpsess.setAttribute("message","Invalid Mobile number");
+        httpsess.setAttribute("dcol","1");
+        response.sendRedirect("index.jsp");
+            return;
+        }
+        
 //        Password validation
         if(!Validation.passwordValidation(password))
         {

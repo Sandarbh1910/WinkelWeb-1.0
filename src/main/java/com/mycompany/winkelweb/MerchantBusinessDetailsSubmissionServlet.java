@@ -6,7 +6,7 @@
 package com.mycompany.winkelweb;
 
 import Helper.Validation;
-import WinkelWeb_DAO.MerchantDAO;
+import WinkelWeb_DAO.MerchantBusinessDetailsSubmissionDAO;
 import WinkelWeb_POJO.UserCredentialsPOJO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -53,7 +53,7 @@ public class MerchantBusinessDetailsSubmissionServlet extends HttpServlet {
             return;
         }
         
-        String res=MerchantDAO.registerMerchant(merchant,firmname, gstno, accno, ifsccode, firmaddress);
+        String res=MerchantBusinessDetailsSubmissionDAO.registerMerchant(merchant,firmname, gstno, accno, ifsccode, firmaddress);
         System.out.println("Reached servlet merchant business details submit ");
         if(res.equalsIgnoreCase("Registration Successful"))
         {
