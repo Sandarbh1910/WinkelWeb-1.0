@@ -101,14 +101,21 @@ main{
             
             /*Navbar Code starts here*/
             
+            nav{
+                position:fixed;
+    width:100vw;
+    top:0;
+    z-index: 100;
+            }
             
-nav{
+.mynavbar{
     background-color: #212529;
     padding:15px;
     display:flex;
     flex-wrap: wrap;
     align-items: center;
     min-width:250px;
+    
     
     
 }
@@ -135,7 +142,7 @@ nav{
     top:50px;
     left:200px;
     display:none;
-    z-index:6;
+    z-index:1000 !important;
     
 }
 
@@ -673,3 +680,5 @@ a{
             
             
             /*Sidebar Code ends here*/
+            
+           
