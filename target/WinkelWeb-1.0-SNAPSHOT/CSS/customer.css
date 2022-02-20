@@ -60,9 +60,14 @@ main{
 
 
 /*Navbar Code starts here*/
+       nav{
+                position:fixed;
+    width:100vw;
+    top:0;
+    z-index: 100;
+            }      
             
-            
-nav{
+.mynavbar{
     background-color: #212529;
     padding:15px;
     display:flex;
@@ -74,8 +79,9 @@ nav{
 }
 
 .logo{
-    color:white;
+    color:white !important;
     font-size: 25px;
+    cursor: pointer;
 }
 
 .category{

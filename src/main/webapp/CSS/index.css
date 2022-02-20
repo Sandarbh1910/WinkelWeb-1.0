@@ -121,8 +121,9 @@ main{
 }
 
 .logo{
-    color:white;
+    color:white !important;
     font-size: 25px;
+    cursor: pointer;
 }
 
 .category{

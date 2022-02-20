@@ -45,9 +45,9 @@ else{
         
         
          <!-- Navbar Starts  -->
-    
-   <nav>
-        <span class="logo">WinkelWeb</span>
+         <nav>
+   <div class="mynavbar">
+        <a class="logo" href="#home">WinkelWeb</a>
 
         <label for="nav-category-checkbox" class="category">Category&nbsp;<img src="./Icons/down.svg"
                 style="filter: invert(50%); position: relative; top: 5px" /></label>
@@ -70,12 +70,12 @@ else{
             <label  for="login-modal-checkbox" class="login-btn">Login</label>-->
              <a href="LogoutServlet" class="logout-btn">Logout</a> 
         </div>
-    </nav>
+    </div>
 
     <div class="below-bar">
         <label for="sideclosecheckbox" style="z-index: 10;cursor:pointer;width:30px;height:30px;" ><img src="./Icons/hamburger-icon.svg" alt=""  /></label>
     </div>
-
+         </nav>
     <!--Navbar Ends Here-->
         
         
@@ -132,7 +132,7 @@ else{
         
         <!--Sidebar Code ends here-->
         
-        <main>
+        <main id="home">
             
             <!--Carousel starts here-->
             

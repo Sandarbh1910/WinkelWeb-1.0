@@ -26,7 +26,7 @@
     <nav>
         
          <div class="mynavbar">
-        <span class="logo">WinkelWeb</span>
+        <a class="logo" href="#home">WinkelWeb</a>
 
         <label for="nav-category-checkbox" class="category">Category&nbsp;<img src="./Icons/down.svg"
                 style="filter: invert(50%); position: relative; top: 0px" /></label>
@@ -71,15 +71,15 @@
             <div class="customer-register-modal-body modal-body">
                 <form action="CustomerRegistrationServlet" class="signup">
                     <input type="text" placeholder="Firstname" name="crfirstname" class="signup-input"
-                        id="signup-firstname" />
+                        id="signup-firstname" required/>
                     <input type="text" placeholder="Lastname" name="crlastname" class="signup-input"
-                        id="signup-lastname" />
-                    <input type="email" placeholder="Email" name="cremail" class="signup-input" id="signup-email" />
-                    <input type="tel" placeholder="Mob" name="crmob" class="signup-input" id="signup-mob" />
-                    <input type="date" placeholder="DOB" name="crdob" class="signup-input" id="signup-dob" />
-                    <input type="password" placeholder="Password" name="crpassword" class="signup-input" id="signup-password" />
+                        id="signup-lastname" required/>
+                    <input type="email" placeholder="Email" name="cremail" class="signup-input" id="signup-email" required />
+                    <input type="tel" placeholder="Mob" name="crmob" class="signup-input" id="signup-mob" required/>
+                    <input type="date" placeholder="DOB" name="crdob" class="signup-input" id="signup-dob" required/>
+                    <input type="password" placeholder="Password" name="crpassword" class="signup-input" id="signup-password" required/>
                     <textarea  name="craddress" placeholder="Address" class="signup-input" id="craddress-txt-area"
-                        style="resize: none; max-width: 98%; width: 98%;height:100px;min-height: 50px;"></textarea>
+                        style="resize: none; max-width: 98%; width: 98%;height:100px;min-height: 50px;" required></textarea>
 
                     <!--Merchant Modal button-->
                     <a href="merchantregister.jsp"
@@ -142,9 +142,9 @@
             <div class="login-modal-body modal-body">
                 <img src="" alt="" />
                 <form action="LoginServlet" class="login">
-                    <input type="tel" placeholder="Mob" name="logmob" class="login-input" id="login-mob" />
+                    <input type="tel" placeholder="Mob" name="logmob" class="login-input" id="login-mob" required/>
                     <input type="password" placeholder="Password" name="logpassword" class="login-input"
-                        id="login-password" />
+                        id="login-password" required/>
 
                     <div class="modal-footer">
                         <label id="close-login-modal-lbl"  for="login-modal-checkbox" >
@@ -184,7 +184,7 @@
             <hr>
             <div class="sidemain">
                 <ul class="sidelist">
-                    <li class="sidelistitem"><a href="">Home</a></li>
+                    <li class="sidelistitem"><a href="#home">Home</a></li>
                     <li class="sidelistitem"><a href="">Orders</a></li>
                     <li class="sidelistitem"><a href="">Cart</a></li>
                     <li class="sidelistitem"><a href="">Customer Services</a></li>
@@ -218,7 +218,7 @@
     <!-- Side Bar Ends -->
 
 
-    <main>
+    <main id="home">
         <!-- Carousel Starts  -->
 
        <div class="mycarousel">

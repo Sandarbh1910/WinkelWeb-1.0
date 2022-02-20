@@ -7,7 +7,7 @@
         <%@include file="common_css_js.jsp" %>
         <style>
             .alert{
-                position: absolute;
+                position: fixed !important;
                 top:100px;
                 z-index: 10000;
                 min-width: 100vw;
