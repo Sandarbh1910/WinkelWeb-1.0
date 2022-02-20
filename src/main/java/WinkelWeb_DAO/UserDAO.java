@@ -20,7 +20,7 @@ import java.sql.Statement;
 public class UserDAO {
     
      public static int getUserIdCount()
-    { int usid=0;
+    { int usid=-1;
         try{
         Connection conn=DBConnection.getConnection();
         Statement st=conn.createStatement();

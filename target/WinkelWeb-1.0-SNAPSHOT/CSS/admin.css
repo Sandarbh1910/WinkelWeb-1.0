@@ -359,6 +359,21 @@ main{
     margin-top:20px;
 }
 
+.lbl-close{
+    padding:10px;
+    border:1px solid #6c757d;
+    background-color: #6c757d;
+    width:49%;
+    text-align: center;
+    color:white;
+}
+
+.modal-btns{
+    padding:10px;
+    width:100%;
+    text-align: center;
+}
+
 /*Common Modal Code Ends Here*/
 
 /*Add category Modal Starts Here*/
@@ -415,6 +430,35 @@ main{
     display:none;
 }
 
+#add-cat-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:20px;
+    width:100%;
+    height: 100%;
+    flex-wrap:wrap;
+}
+#add-cat-title-input,#add-cat-desc-input{
+    padding:10px;
+    width:90%;
+    border-radius: 4px;
+    margin:3px;
+}
+
+#add-cat-submit-btn{
+    padding:10px;
+    width:49%;
+    background-color: #0d6efd;
+    color:white;
+    position: relative;
+    bottom:2px;
+}
+
+#add-cat-submit-btn:hover{
+   
+    background-image:linear-gradient(to bottom right,#0d6efd,#5a9cfe);
+}
 /*Add category Modal ends Here*/
 
 
@@ -429,6 +473,8 @@ main{
     background-color: rgba(51,51,51,0.8);
     display:none;
     z-index:5;
+    overflow: hidden;
+    overflow-y: scroll;
 }
 
 
@@ -471,6 +517,37 @@ main{
 
 #rem-cat-modal-checkbox{
     display:none;
+}
+
+#rem-cat-form{
+     display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:20px;
+    width:100%;
+    height: 100%;
+    flex-wrap:wrap;
+}
+
+.rem-cat-input{
+    padding:10px;
+    width:80%;
+    border-radius: 4px;
+    margin:3px;
+}
+
+#rem-cat-submit-btn{
+    padding:10px;
+    width:49%;
+    color:white;
+    background-color: #6c757d;
+    position: relative;
+    bottom:2px;
+}
+
+#rem-cat-submit-btn:hover{
+   
+    background-color:red;
 }
 
 /*Remove category Modal ends Here*/
@@ -532,5 +609,35 @@ main{
 #rem-user-modal-checkbox{
     display:none;
 }
+#rem-user-form{
+     display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:20px;
+    width:100%;
+    height: 100%;
+    flex-wrap:wrap;
+}
 
+#rem-user-mob-input{
+    padding:10px;
+    width:80%;
+    border-radius: 4px;
+    margin:3px;
+}
+
+#rem-user-submit-btn{
+    padding:10px;
+    width:49%;
+    color:white;
+    background-color: #6c757d;
+    position: relative;
+    bottom:2px;
+}
+
+#rem-user-submit-btn:hover{
+   
+    background-color:red;
+    
+}
 /*Remove User Modal ends Here*/

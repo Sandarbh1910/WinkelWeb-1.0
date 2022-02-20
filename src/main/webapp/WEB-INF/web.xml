@@ -20,6 +20,14 @@
         <servlet-name>MerchantBusinessDetailsSubmissionServlet</servlet-name>
         <servlet-class>com.mycompany.winkelweb.MerchantBusinessDetailsSubmissionServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RemoveCategoryServlet</servlet-name>
+        <servlet-class>com.mycompany.winkelweb.RemoveCategoryServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddCategoryServlet</servlet-name>
+        <servlet-class>com.mycompany.winkelweb.AddCategoryServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CustomerRegistrationServlet</servlet-name>
         <url-pattern>/CustomerRegistrationServlet</url-pattern>
@@ -39,6 +47,14 @@
     <servlet-mapping>
         <servlet-name>MerchantBusinessDetailsSubmissionServlet</servlet-name>
         <url-pattern>/MerchantBusinessDetailsSubmissionServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RemoveCategoryServlet</servlet-name>
+        <url-pattern>/RemoveCategoryServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddCategoryServlet</servlet-name>
+        <url-pattern>/AddCategoryServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

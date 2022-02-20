@@ -1,3 +1,6 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="WinkelWeb_POJO.CategoryPOJO"%>
+<%@page import="WinkelWeb_DAO.CategoryDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="WinkelWeb_POJO.UserCredentialsPOJO"%>
 
@@ -168,7 +171,14 @@
 
             <div class="add-cat-modal-body modal-body">
                 <img src="" alt="" />
-               
+               <form id="add-cat-form" action="AddCategoryServlet" method="POST">
+                    <input type="text" required id="add-cat-title-input" name="cat-title" placeholder="Category Title">
+                    <input type="text" required id="add-cat-desc-input" name="cat-desc" placeholder="Category Description">
+                    <div class="modal-btns">
+                         <label class="lbl-close" for="add-cat-modal-checkbox">Close</label>
+                    <input type="submit" id="add-cat-submit-btn" value="Add Category">
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -188,7 +198,36 @@
 
             <div class="rem-cat-modal-body modal-body">
                 <img src="" alt="" />
-               
+               <form id="rem-cat-form" action="RemoveCategoryServlet" method="POST">
+                   
+               <%
+                      ArrayList<CategoryPOJO>arr=CategoryDAO.loadCategory();
+                     
+                   if(arr!=null){
+                    for(CategoryPOJO cat:arr)
+                   {
+                %>
+                   
+                       <div class="rem-cat-input"> <input type="checkbox"  name="del-cat" value="<%=cat.getCatTitle()%>" ><span><%=cat.getCatTitle()%></span></div>
+                   
+               <%
+                    }
+                               }
+                   
+               %>    
+                   
+                     
+                   
+                   
+                  
+                   
+                   
+                   
+                    <div class="modal-btns">
+                        <label class="lbl-close" for="rem-cat-modal-checkbox">Close</label>
+                    <input type="submit" id="rem-cat-submit-btn" value="Remove">
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -209,7 +248,13 @@
 
             <div class="rem-user-modal-body modal-body">
                 <img src="" alt="" />
-               
+                <form id="rem-user-form" action="" method="POST">
+                    <input type="tel" required id="rem-user-mob-input" placeholder="Mobile Number">
+                    <div class="modal-btns">
+                        <label class="lbl-close" for="rem-user-modal-checkbox">Close</label>
+                    <input type="submit" id="rem-user-submit-btn" value="Remove">
+                    </div>
+                </form>
             </div>
         </div>
     </div>

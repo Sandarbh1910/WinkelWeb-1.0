@@ -81,4 +81,13 @@ public class Validation {
         }
          return false;
    }
+    
+    
+    public static boolean addCategoryDataEmptyValidation(String title,String desc)
+    {   
+        
+        if(title.length()!=0&&desc.length()!=0)
+        {return true;}
+        return false;
+    }
 }
