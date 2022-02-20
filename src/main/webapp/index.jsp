@@ -140,7 +140,7 @@
             <hr>
 
             <div class="login-modal-body modal-body">
-                <img src="" alt="" />
+                <img src="./Icons/login_shield.svg" width="50" height="50" alt="" />
                 <form action="LoginServlet" class="login">
                     <input type="tel" placeholder="Mob" name="logmob" class="login-input" id="login-mob" required/>
                     <input type="password" placeholder="Password" name="logpassword" class="login-input"

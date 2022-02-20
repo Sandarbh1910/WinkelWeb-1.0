@@ -1,0 +1,536 @@
+*{
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+}
+
+a{
+    text-decoration: none;
+}
+
+/*Navbar Code starts here*/
+nav{
+    position:fixed;
+    min-width:100%;
+    top:0;
+    z-index: 100;
+}
+
+.mynavbar{
+    display:flex;
+    background-color: #212529;
+    padding:15px;
+    min-width: 250px;
+    align-items: center;
+}
+
+
+.logo{
+    color:white !important;
+    font-size: 25px;
+    cursor: pointer;
+    
+}
+
+
+
+.logout-btn{
+    margin-left:auto;
+    color:red;
+    border:1px solid red;
+    padding:10px;
+    border-radius: 4px;
+}
+
+.logout-btn:hover{
+    background-color: red;
+    color:white;
+}
+
+.below-bar{
+    background-color: #f8f9fa;
+    padding:10px;
+    z-index:5;
+}
+
+/*Navbar Code ends here*/ 
+
+
+/*Siderbar code starts here*/
+            
+            
+
+*{
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+
+}
+
+a{
+    text-decoration:none;
+    color:white;
+}
+
+.myoffcanvas{
+    height:100%;
+    width:25vw;
+    min-width: 250px;
+    background-color: aqua;
+    z-index: 20000000;
+    position:fixed;
+    top:0;
+    left:-100%;
+    transition-duration: .6s;
+    
+    
+}
+
+
+.sidebar{
+    padding:15px;
+    background-color: #3f4d6a;
+    width:100%;
+    height: 100%;
+}
+
+.sidehead{
+    padding:15px;
+    
+}
+
+
+.sideclosebtn{
+    width:25px;
+    height:25px;
+    filter:invert(100%);
+}
+.greeting{
+    padding:15px;
+    text-align: center;
+    font-size: 30px;
+    font-family: 'KoHo', sans-serif;
+    color:white;
+    
+}
+
+@media only screen and (max-width:1500px) {
+
+.greeting{
+    font-size:20px ;
+    font-weight: bolder;
+}
+    
+}
+
+.sidemain{
+    height:75%;
+}
+
+.sidelist{
+    list-style-type: none;
+    padding:20px 0px;
+}
+
+.sidelistitem{
+    font-size: large;
+    padding:10px 30px;
+
+}
+
+.sidelistitem:active{
+    background-color: #0d6efd;
+    color:white;
+}
+
+.sidelistitem:hover{
+    background-color: #37435c;
+    border-radius:5px;
+    color:#670975;
+}
+
+#sideclosecheckbox{
+    display:none;
+}
+
+#sideclosecheckbox:checked ~ .myoffcanvas{
+    left:0;
+}
+
+.sidefooter{
+   
+   height: 60px;
+   padding:10px;
+}
+
+.sidebardp{
+    background-color: aqua;
+    border-radius: 50%;
+    width:50px;
+    height:50px;
+    padding:5px;
+    text-align: center;
+    object-fit:contain;
+}
+
+.sidebarusername{
+   
+    padding:5px;
+    text-align: center;
+    font-family: 'Paytone One', sans-serif;
+    position:relative;
+    bottom:20px;
+    color:white;
+}
+
+
+
+.sideuserlist{
+   position:relative;
+   bottom:180px;
+   left:50px;
+    max-width: 120px;
+    border:1px solid #212529;
+    border-radius: 5px;
+    background-color: #37435c;
+    padding:10px 0px;
+    min-width:160px;
+    display: none;
+    
+}
+
+.sideuserlist ul{
+    list-style-type: none;
+}
+
+.sideuserlistitem{
+    padding:8px;
+}
+
+.sideuserlistitem:hover{
+    background-color: #e1e1e2;
+    
+}
+
+.sideuserlistitem:hover a{
+    color:#37435c;
+}
+
+#sidebarusercheckbox{
+    display:none;
+}
+#sidebarusercheckbox:checked ~ .sideuserlist{
+    display: block;
+}
+
+
+            
+            
+            
+            /*Sidebar Code ends here*/
+
+main{
+    position:absolute;
+    top:120px;
+    min-width: 100vw;
+    height:auto;
+    background-color: #ffffff;
+    
+}
+
+
+.app-stats-bar{
+    display:flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding:10px;
+}
+
+
+.users-stat,.category-stat,.products-stat,.orders-stat{
+    background-color: rgb(36, 181, 238);
+    padding:20px;
+    color:white;
+    min-width:250px;
+    text-align: center;
+    margin:1px;
+}
+
+.users-stat{
+    background-image: linear-gradient(to right,#008688,#00e9ec)
+}
+
+.category-stat{
+    background-image: linear-gradient(to right,#ff0c4d,#ff9eaf);
+}
+
+.products-stat{
+    background-image: linear-gradient(to right,#ff8433,#ffc8a8);
+}
+
+.orders-stat{
+    background-image: linear-gradient(to right,#00ab77,#00efaf);
+}
+
+.stats-icon{
+    border-radius: 50%;
+    width:50px;
+    height: 50px;
+}
+
+.admin-option-box{
+    display: flex;
+    min-width: 100vw;
+    padding:10px;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    min-height: 52vh;
+}
+
+.cat,.rem-user,.feedbacks{
+    background-color: #e2e5e7;
+    min-width:250px;
+    margin:1px;
+    min-height: 250px;
+    text-align: center;
+    padding: 20px;
+    border-radius:30px;
+    display:inline-block;
+    color:black;
+    width:300px;
+}
+.add-cat,.rem-cat,.cfeeds,.mfeeds{
+    min-height:50%;
+    background-color: #e2e5e7;
+    display:inline-block;
+    width:100%;
+    color:black;
+}
+
+.rem-cat,.mfeeds{
+    border-top:2px solid white;
+}
+
+.add-cat:hover,.rem-cat:hover,.rem-user:hover,.cfeeds:hover,.mfeeds:hover{
+    background-image: linear-gradient(to bottom right,#e2e5e7,#ffffff);
+    border:1px solid #e1e1e2;
+}
+
+.rem-user{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+
+
+.option-title{
+    width:100%;
+    display: inline-block;
+    font-size: large;
+    font-weight: bold;
+}
+.footer{
+    background-color: #3f4d6a;
+    text-align:center;
+    border-radius: 8px;
+    width:100%;
+    min-height:80px;
+    padding:20px;
+    color:white;
+}
+
+/*Common Modal Code Starts Here*/
+
+.modal-body{
+    display:flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    
+}
+
+.modal-header{
+    padding:15px;
+}
+
+
+.modal-footer{
+    margin-top:20px;
+}
+
+/*Common Modal Code Ends Here*/
+
+/*Add category Modal Starts Here*/
+
+.add-cat-modal-black-screen{
+    width:100vw;
+    min-height:100%;
+    position:fixed;
+    top:0;
+    background-color: rgba(51,51,51,0.8);
+    display:none;
+    z-index:5;
+}
+
+
+
+.add-cat-modal{
+    max-width:32vw;
+    min-height: 45vh;
+    min-width: 250px;
+    color:black;
+    background-color: white;
+    margin:auto;
+    position:relative;
+    top:180px;
+    border-radius: 3px;
+    
+}
+
+
+
+
+.close-add-cat-modal-btn{
+    float:right;
+}
+
+#close-add-cat-modal-lbl{
+    padding:10px 15px;
+    background-color: #6c757d;
+    color:white;
+    border-radius: 5px;
+    position:relative;
+    top:1px;
+}
+
+
+
+#add-cat-modal-checkbox:checked ~ .add-cat-modal-black-screen
+{
+    display:block;
+}
+
+#add-cat-modal-checkbox{
+    display:none;
+}
+
+/*Add category Modal ends Here*/
+
+
+
+/*Remove category Modal Starts Here*/
+
+.rem-cat-modal-black-screen{
+    width:100vw;
+    height:100vh;
+    position:fixed;
+    top:0;
+    background-color: rgba(51,51,51,0.8);
+    display:none;
+    z-index:5;
+}
+
+
+
+.rem-cat-modal{
+    max-width:32vw;
+    min-height: 45vh;
+    min-width: 250px;
+    color:black;
+    background-color: white;
+    margin:auto;
+    position:relative;
+    top:180px;
+    border-radius: 3px;
+    
+}
+
+
+
+
+.close-rem-cat-modal-btn{
+    float:right;
+}
+
+#close-rem-cat-modal-lbl{
+    padding:10px 15px;
+    background-color: #6c757d;
+    color:white;
+    border-radius: 5px;
+    position:relative;
+    top:1px;
+}
+
+
+
+#rem-cat-modal-checkbox:checked ~ .rem-cat-modal-black-screen
+{
+    display:block;
+}
+
+#rem-cat-modal-checkbox{
+    display:none;
+}
+
+/*Remove category Modal ends Here*/
+
+
+
+/*Remove User Modal Starts Here*/
+
+
+
+.rem-user-modal-black-screen{
+    width:100vw;
+    height:100vh;
+    position:fixed;
+    top:0;
+    background-color: rgba(51,51,51,0.8);
+    display:none;
+    z-index:5;
+}
+
+
+
+.rem-user-modal{
+    max-width:32vw;
+    min-height: 45vh;
+    min-width: 250px;
+    color:black;
+    background-color: white;
+    margin:auto;
+    position:relative;
+    top:180px;
+    border-radius: 3px;
+    
+}
+
+
+
+
+.close-rem-user-modal-btn{
+    float:right;
+}
+
+#close-rem-user-modal-lbl{
+    padding:10px 15px;
+    background-color: #6c757d;
+    color:white;
+    border-radius: 5px;
+    position:relative;
+    top:1px;
+}
+
+
+
+#rem-user-modal-checkbox:checked ~ .rem-user-modal-black-screen
+{
+    display:block;
+}
+
+#rem-user-modal-checkbox{
+    display:none;
+}
+
+/*Remove User Modal ends Here*/
