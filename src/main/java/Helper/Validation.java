@@ -16,48 +16,30 @@ import java.util.regex.Pattern;
 public class Validation {
     public static boolean registrationDataEmptyValidation(UserCredentialsPOJO user)
     {
-        if(user.getFirstname().length()==0)
+        if((user.getFirstname().length()!=0)&&(user.getLastname().length()!=0)&&(user.getMob().length()!=0)&&(user.getDob().length()!=0)&&(user.getEmail().length()!=0)&&(user.getPassword().length()!=0)&&(user.getAddress().length()!=0))
         {
-            return false;
+            return true;
         }
-        else if(user.getLastname().length()==0){return false;}
-        else if(user.getMob().length()==0){return false;}
-        else if(user.getDob().length()==0){return false;}
-        else if(user.getEmail().length()==0){return false;}
-        else if(user.getPassword().length()==0){return false;}
-        else if(user.getAddress().length()==0){return false;}
-        return true;
+        return false;
     }
     
     
     public static boolean merchantBusinessDataEmptyValidation(String firmname,String gstno,String accno,String ifsccode,String firmaddress)
     {
-        if(firmname.length()==0)
-        {return false;}
-        else if(gstno.length()==0){return false;}
-        else if(accno.length()==0){return false;}
-        else if(ifsccode.length()==0){return false;}
-        else if(firmaddress.length()==0){return false;}
         
-        return true;
+        if(firmname.length()!=0&&gstno.length()!=0&&accno.length()!=0&&ifsccode.length()!=0&&firmaddress.length()!=0)
+        {
+            return true;
+        }
+        return false;
     }
     
     public static boolean loginDataEmptyValidation(String mob,String password)
-    {
-        int m=mob.length();
-        int p=password.length();
-        System.out.println("m="+m+" p="+p);
-        if(m<=0)
-        {
-            System.out.println("login valid= "+false);
-            return false;
-        }
-        else if(p<=0)
-        {
-            return false;
-        }
-        System.out.println("login valid= "+true);
-        return true;
+    {   
+        
+        if(mob.length()!=0&&password.length()!=0)
+        {return true;}
+        return false;
     }
     
     
@@ -66,11 +48,16 @@ public class Validation {
         char ch=mob.charAt(0);
         if(mob.length()==10)
         {
-            if((ch=='9')&&mob.length()<=10)
-        { return true;}
-        else if(ch=='8'){return true;}
-        else if(ch=='7'){return true;}
-        else if(ch=='6'){return true;}
+//            if((ch=='9')&&mob.length()<=10)
+//        { return true;}
+//        else if(ch=='8'){return true;}
+//        else if(ch=='7'){return true;}
+//        else if(ch=='6'){return true;}
+            
+            if(ch=='9'||ch=='8'||ch=='7'||ch=='6')
+            {
+                return true;
+            }
         }
         
         return false;
@@ -89,21 +76,9 @@ public class Validation {
         Matcher has_capital_letter=capital_letter.matcher(password);
         Matcher has_digit=digits.matcher(password);
         Matcher has_special=special.matcher(password);
-        if(!has_small_letter.find())
-        {return false;}
-        
-        else if(!has_capital_letter.find())
-        {return false;}
-        
-        else if(!has_digit.find())
-        {return false;}
-        
-        else if(!has_special.find())
-        {return false;}
-        
-        return true;
+   
+          return (has_small_letter.find()&&has_capital_letter.find()&&has_digit.find()&&has_special.find());
         }
-        
-        return false;
-    }
+         return false;
+   }
 }
