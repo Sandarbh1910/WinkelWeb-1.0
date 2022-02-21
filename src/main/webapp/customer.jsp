@@ -1,3 +1,6 @@
+<%@page import="WinkelWeb_DAO.CategoryDAO"%>
+<%@page import="WinkelWeb_POJO.CategoryPOJO"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="WinkelWeb_POJO.UserCredentialsPOJO"%>
 
 
@@ -53,9 +56,25 @@ else{
                 style="filter: invert(50%); position: relative; top: 5px" /></label>
         <input type="checkbox" id="nav-category-checkbox" />
         <ul class="categorylist">
-            <li class="categorylistitem"><a href="">Phones</a></li>
-            <li class="categorylistitem"><a href="">Laptops</a></li>
-            <li class="categorylistitem"><a href="">Tvs</a></li>
+            
+            <%ArrayList<CategoryPOJO>catlist=CategoryDAO.loadCategory();
+            if(catlist!=null)
+            {
+                for(CategoryPOJO c:catlist)
+                {
+                
+                %>
+            <li class="categorylistitem"><a href="#"><%=c.getCatTitle()%></a></li>
+            
+            <%
+                }
+                
+
+                
+            }
+            %>
+            
+            
         </ul>
 
         <div class="search">
@@ -88,12 +107,12 @@ else{
         <div class="sidebar">
 
             <label for="sideclosecheckbox">
-                <img src="./Icons/closebtn.svg" alt="" width="10" height="10"class="sideclosebtn">
+                <img src="./Icons/closebtn.svg" alt="" width="10" height="10" class="sideclosebtn">
             </label>
 
             <div class="sidehead">
 
-                <span class="greeting">Hi ,Sandarbh</span>
+                <span class="greeting">Hi ,<%=user.getFirstname()%></span>
 
             </div>
             <hr>
@@ -111,7 +130,7 @@ else{
               
                
                 <img class="sidebardp" src="./Icons/login_shield.svg" alt="">
-                <label for="sidebarusercheckbox" class="sidebarusername">Sandarbh Taran</label>
+                <label for="sidebarusercheckbox" class="sidebarusername"><%=user.getFirstname()+user.getLastname()%></label>
                
               
 
@@ -121,7 +140,7 @@ else{
                 <ul>
                     <li class="sideuserlistitem"><a href="">Setting</a></li>
                     <li class="sideuserlistitem" style="border-bottom: 2px solid #e1e1e2;"><a href="">Profile</a></li>
-                    <li class="sideuserlistitem"><a href="">Sign out</a></li>
+                    <li class="sideuserlistitem"><a href="LogoutServlet">Sign out</a></li>
                 </ul>
               </div>
             </div>

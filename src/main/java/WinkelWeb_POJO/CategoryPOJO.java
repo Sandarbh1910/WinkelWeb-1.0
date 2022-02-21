@@ -10,23 +10,17 @@ package WinkelWeb_POJO;
  * @author sanda
  */
 public class CategoryPOJO {
-    private String catId;
+   
     private String catTitle;
     private String catDesc;
 
-    public CategoryPOJO(String catId, String catTitle, String catDesc) {
-        this.catId = catId;
+    public CategoryPOJO( String catTitle, String catDesc) {
+       
         this.catTitle = catTitle;
         this.catDesc = catDesc;
     }
 
-    public String getCatId() {
-        return catId;
-    }
-
-    public void setCatId(String catId) {
-        this.catId = catId;
-    }
+    
 
     public String getCatTitle() {
         return catTitle;

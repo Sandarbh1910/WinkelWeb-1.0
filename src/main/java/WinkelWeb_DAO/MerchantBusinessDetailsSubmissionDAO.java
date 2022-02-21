@@ -31,21 +31,23 @@ public class MerchantBusinessDetailsSubmissionDAO {
             ps.setString(5, merchant.getMob());
             ps.setString(6,firmaddress);
                System.out.println("in merch dao :firmname="+firmname+", "+gstno+", "+accno+", "+ifsccode+", "+firmaddress+",");
-            int usid=UserDAO.getUserIdCount();
-             PreparedStatement ps1=conn.prepareStatement("insert into user_credentials  values (?,?,?,?,?,?,?,?,?,?)");
-            ps1.setString(1,"WW"+usid);
-            ps1.setString(2,merchant.getFirstname());
-            ps1.setString(3,merchant.getLastname());
-            ps1.setString(4,merchant.getMob());
-            ps1.setString(5,merchant.getDob());
-            ps1.setString(6,merchant.getEmail());
-            ps1.setString(7,merchant.getPassword());
-            ps1.setString(8,merchant.getAddress());
-            ps1.setString(9,merchant.getUser_type());
-            ps1.setString(10,"default.jpeg");
-            System.out.println("Reached merchant  dao");
+           
+//             PreparedStatement ps1=conn.prepareStatement("insert into user_credentials  values (?,?,?,?,?,?,?,?,?,?)");
+//            ps1.setString(1,"WW"+merchant.getMob());
+//            ps1.setString(2,merchant.getFirstname());
+//            ps1.setString(3,merchant.getLastname());
+//            ps1.setString(4,merchant.getMob());
+//            ps1.setString(5,merchant.getDob());
+//            ps1.setString(6,merchant.getEmail());
+//            ps1.setString(7,merchant.getPassword());
+//            ps1.setString(8,merchant.getAddress());
+//            ps1.setString(9,merchant.getUser_type());
+//            ps1.setString(10,"default.jpeg");
+
             ps.executeUpdate();
-            ps1.executeUpdate();
+            UserDAO.merchantRegister(merchant);
+            System.out.println("Reached merchant  dao");
+//            ps1.executeUpdate();
             
            
            

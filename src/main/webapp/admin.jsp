@@ -1,3 +1,4 @@
+<%@page import="WinkelWeb_DAO.UserDAO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="WinkelWeb_POJO.CategoryPOJO"%>
 <%@page import="WinkelWeb_DAO.CategoryDAO"%>
@@ -9,32 +10,32 @@
 
 
 <%
-//    UserCredentialsPOJO user=(UserCredentialsPOJO)session.getAttribute("current_user");
-//    
-//if(user!=null)
-//{
-//    if(user.getUser_type().equalsIgnoreCase("customer"))
-//    {
-//         session.setAttribute("message", "Unauthorised Access!. Do not try that again.");
-//    session.setAttribute("dcol","1");
-//    response.sendRedirect("customer.jsp");
-//    return;
-//    }
-//    else if(user.getUser_type().equalsIgnoreCase("merchant"))
-//    {
-//         session.setAttribute("message", "Unauthorised Access!. Do not try that again.");
-//    session.setAttribute("dcol","1");  
-//    response.sendRedirect("merchant.jsp");
-//    return;
-//    }
-//    
-//}
-//else{
-//    session.setAttribute("message", "Login Required!");
-//    session.setAttribute("dcol","1");
-//    response.sendRedirect("index.jsp");
-//    return;
-//}
+    UserCredentialsPOJO user=(UserCredentialsPOJO)session.getAttribute("current_user");
+    
+if(user!=null)
+{
+    if(user.getUser_type().equalsIgnoreCase("customer"))
+    {
+         session.setAttribute("message", "Unauthorised Access!. Do not try that again.");
+    session.setAttribute("dcol","1");
+    response.sendRedirect("customer.jsp");
+    return;
+    }
+    else if(user.getUser_type().equalsIgnoreCase("merchant"))
+    {
+         session.setAttribute("message", "Unauthorised Access!. Do not try that again.");
+    session.setAttribute("dcol","1");  
+    response.sendRedirect("merchant.jsp");
+    return;
+    }
+    
+}
+else{
+    session.setAttribute("message", "Login Required!");
+    session.setAttribute("dcol","1");
+    response.sendRedirect("index.jsp");
+    return;
+}
 
 
 %>
@@ -57,7 +58,7 @@
 <nav>
     <div class="mynavbar">
         <a href="" class="logo">WinkelWeb</a>
-        <a href="" class="logout-btn">Logout</a>
+        <a href="LogoutServlet" class="logout-btn">Logout</a>
     </div>
     <div class="below-bar">
         <label for="sideclosecheckbox" style="z-index: 10;cursor:pointer;width:30px;height:30px;" ><img src="./Icons/hamburger-icon.svg" alt=""  /></label>
@@ -82,16 +83,16 @@
 
             <div class="sidehead">
 
-                <span class="greeting">Hi ,Sandarbh</span>
+                <span class="greeting">Hi ,<%=user.getFirstname()%></span>
 
             </div>
             <hr>
             <div class="sidemain">
                 <ul class="sidelist">
                     <li class="sidelistitem"><a href="#home">Home</a></li>
-                    <li class="sidelistitem"><a href="">Orders</a></li>
+<!--                    <li class="sidelistitem"><a href="">Orders</a></li>
                     <li class="sidelistitem"><a href="">Cart</a></li>
-                    <li class="sidelistitem"><a href="feedbacks.jsp">Feedbacks/Complaints</a></li>
+                    <li class="sidelistitem"><a href="feedbacks.jsp">Feedbacks/Complaints</a></li>-->
 
                 </ul>
             </div>
@@ -100,7 +101,7 @@
               
                
                 <img class="sidebardp" src="icons/login_Shiled.svg" alt="">
-                <label for="sidebarusercheckbox" class="sidebarusername">Sandarbh Taran</label>
+                <label for="sidebarusercheckbox" class="sidebarusername"><%=user.getFirstname()+user.getLastname()%></label>
                
               
 
@@ -110,7 +111,7 @@
                 <ul>
                     <li class="sideuserlistitem"><a href="">Setting</a></li>
                     <li class="sideuserlistitem" style="border-bottom: 2px solid #e1e1e2;"><a href="">Profile</a></li>
-                    <li class="sideuserlistitem"><a href="">Sign out</a></li>
+                    <li class="sideuserlistitem"><a href="LogoutServlet">Sign out</a></li>
                 </ul>
               </div>
             </div>
@@ -143,7 +144,14 @@
            <label for="add-cat-modal-checkbox" class="add-cat"> <img src="./Icons/add-cat.svg" width="80" height="100" alt=""><span class="option-title">Add Category</span></label>
            <label for="rem-cat-modal-checkbox" class="rem-cat"><img src="./Icons/delete.svg" width="80" height="100" alt=""> <span class="option-title">Remove Category</span></label>
        </div>
-        <label for="rem-user-modal-checkbox" class="rem-user"><img src="./Icons/remove-user.svg" width="80" height="100" alt=""> <span class="rem-user-title option-title">Remove User</span></label>
+        <div class="user">
+            <label for="rem-user-modal-checkbox" class="rem-user"><img src="./Icons/remove-user.svg" width="80" height="100" alt=""> <span class="rem-user-title option-title">Remove User</span></label>
+            <div class="user-block-options">
+                <label for="block-user-modal-checkbox" class="block-user"><img src="./Icons/blockuser.svg" width="80" height="100" alt=""> <span class="block-user-title option-title">Block User</span></label>
+                <label for="unblock-user-modal-checkbox" class="unblock-user"><img src="./Icons/unblockuser.svg" width="80" height="100" alt=""> <span class="unblock-user-title option-title">Unblock User</span></label>
+       
+            </div> 
+        </div>
         <div class="feedbacks">
             <a  href="viewcustomerfeedbacks.jsp" class="cfeeds" ><img src="./Icons/chat-left.svg" width="80" height="100" alt=""> <span class="option-title">Customer Feedbacks</span></a>
             <a  href="viewmerchantfeedbacks.jsp" class="mfeeds" ><img src="./Icons/chat-right.svg" width="80" height="100" alt=""> <span class="option-title">Merchant Feedbacks</span></a>
@@ -235,7 +243,7 @@
        <!--Remove Category Modal Ends-->
        
        
-       <!--Remove User Modal Starts-->
+       <!--Remove  User Modal Starts-->
        
         <input type="checkbox" id="rem-user-modal-checkbox">
     <div class="rem-user-modal-black-screen">
@@ -260,6 +268,76 @@
     </div>
        
        <!--Remove User Modal Ends-->
+       
+        <!--Block  User Modal Starts-->
+       
+        <input type="checkbox" id="block-user-modal-checkbox">
+    <div class="block-user-modal-black-screen">
+        <div class="block-user-modal">
+            <div class="modal-header">
+                Block User
+               <label for="block-user-modal-checkbox"> <img src="./Icons/closebtn.svg" alt="" class="close-block-user-modal-btn" /></label>
+            </div>
+            <hr>
+
+            <div class="block-user-modal-body modal-body">
+                <img src="" alt="" />
+                <form id="block-user-form" action="BlockUserServlet" method="POST">
+                    <input type="tel" required id="block-user-mob-input" name="block-user" placeholder="Mobile Number">
+                    <div class="modal-btns">
+                        <label class="lbl-close" for="block-user-modal-checkbox">Close</label>
+                    <input type="submit" id="block-user-submit-btn" value="Block">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+       
+       <!--Block User Modal Ends-->
+       
+       
+       
+          <!--Unblock  User Modal Starts-->
+       
+        <input type="checkbox" id="unblock-user-modal-checkbox">
+    <div class="unblock-user-modal-black-screen">
+        <div class="unblock-user-modal">
+            <div class="modal-header">
+                Unblock User
+               <label for="unblock-user-modal-checkbox"> <img src="./Icons/closebtn.svg" alt="" class="close-unblock-user-modal-btn" /></label>
+            </div>
+            <hr>
+
+            <div class="unblock-user-modal-body modal-body">
+                <img src="" alt="" />
+                <form id="unblock-user-form" action="UnblockUserServlet" method="POST">
+                      <%
+                      ArrayList<UserCredentialsPOJO>blockedusers=UserDAO.loadBlockedUsers();
+                     
+                   if(blockedusers!=null){
+                    for(UserCredentialsPOJO bu:blockedusers)
+                   {
+                %>
+                   
+                <div class="unblock-user-input"> <input type="checkbox"  name="unblock-user" value="<%=bu.getMob()%>" ><b><span><%=bu.getFirstname()+" "+bu.getLastname()%></span>&nbsp;&nbsp;<span style="float:right;"><%=bu.getMob()%></span></b></div>
+                   
+               <%
+                    }
+                               }
+                   
+               %>    
+               
+               
+                    <div class="modal-btns">
+                        <label class="lbl-close" for="unblock-user-modal-checkbox">Close</label>
+                    <input type="submit" id="unblock-user-submit-btn" value="Unblock">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+       
+       <!--Unblock User Modal Ends-->
       
    
   

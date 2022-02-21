@@ -28,6 +28,14 @@
         <servlet-name>AddCategoryServlet</servlet-name>
         <servlet-class>com.mycompany.winkelweb.AddCategoryServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>BlockUserServlet</servlet-name>
+        <servlet-class>com.mycompany.winkelweb.BlockUserServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UnblockUserServlet</servlet-name>
+        <servlet-class>com.mycompany.winkelweb.UnblockUserServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CustomerRegistrationServlet</servlet-name>
         <url-pattern>/CustomerRegistrationServlet</url-pattern>
@@ -55,6 +63,14 @@
     <servlet-mapping>
         <servlet-name>AddCategoryServlet</servlet-name>
         <url-pattern>/AddCategoryServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BlockUserServlet</servlet-name>
+        <url-pattern>/BlockUserServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UnblockUserServlet</servlet-name>
+        <url-pattern>/UnblockUserServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

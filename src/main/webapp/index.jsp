@@ -1,6 +1,10 @@
 
 
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="WinkelWeb_POJO.CategoryPOJO"%>
+<%@page import="WinkelWeb_POJO.CategoryPOJO"%>
+<%@page import="WinkelWeb_DAO.CategoryDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="en">
@@ -32,9 +36,22 @@
                 style="filter: invert(50%); position: relative; top: 0px" /></label>
         <input type="checkbox" id="nav-category-checkbox" />
         <ul class="categorylist">
-            <li class="categorylistitem"><a href="">Phones</a></li>
-            <li class="categorylistitem"><a href="">Laptops</a></li>
-            <li class="categorylistitem"><a href="">Tvs</a></li>
+               <%ArrayList<CategoryPOJO>catlist=CategoryDAO.loadCategory();
+            if(catlist!=null)
+            {
+                for(CategoryPOJO c:catlist)
+                {
+                
+                %>
+            <li class="categorylistitem"><a href="#"><%=c.getCatTitle()%></a></li>
+            
+            <%
+                }
+                
+
+                
+            }
+            %>
         </ul>
 
         <div class="search">
@@ -178,15 +195,15 @@
 
             <div class="sidehead">
 
-                <span class="greeting">Hi ,Sandarbh</span>
+                <label for="login-modal-checkbox" class="greeting">Hi ,Sign in</label>
 
             </div>
             <hr>
             <div class="sidemain">
                 <ul class="sidelist">
                     <li class="sidelistitem"><a href="#home">Home</a></li>
-                    <li class="sidelistitem"><a href="">Orders</a></li>
-                    <li class="sidelistitem"><a href="">Cart</a></li>
+                    <li class="sidelistitem"><label for="login-modal-checkbox">Orders</label></li>
+                    <li class="sidelistitem"><label for="login-modal-checkbox">Cart</label></li>
                     <li class="sidelistitem"><a href="">Customer Services</a></li>
 
                 </ul>
@@ -206,7 +223,7 @@
                 <ul>
                     <li class="sideuserlistitem"><a href="">Setting</a></li>
                     <li class="sideuserlistitem" style="border-bottom: 2px solid #e1e1e2;"><a href="">Profile</a></li>
-                    <li class="sideuserlistitem"><a href="">Sign out</a></li>
+                    <li class="sideuserlistitem"><label for="login-modal-checkbox">Sign in</label></li>
                 </ul>
               </div>
             </div>

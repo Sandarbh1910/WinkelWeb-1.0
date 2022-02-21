@@ -20,31 +20,31 @@ import java.util.ArrayList;
  */
 public class CategoryDAO {
     
-    public static int getCatid()
-    {
-        int catid=-1;
-        try{
-        Connection conn=DBConnection.getConnection();
-        Statement st=conn.createStatement();
-        ResultSet rs=st.executeQuery("select count(catid) from category");
-        rs.next();
-        catid=rs.getInt(1);
-        }catch(Exception ex)
-        {
-            ex.printStackTrace();
-        }
-        return catid++;
-    }
+//    public static int getCatid()
+//    {
+//        int catid=-1;
+//        try{
+//        Connection conn=DBConnection.getConnection();
+//        Statement st=conn.createStatement();
+//        ResultSet rs=st.executeQuery("select count(catid) from category");
+//        rs.next();
+//        catid=rs.getInt(1);
+//        }catch(Exception ex)
+//        {
+//            ex.printStackTrace();
+//        }
+//        return catid++;
+//    }
     
     public static String addCategory(String title,String desc)
     {
         try{
-            int catid=CategoryDAO.getCatid();
+           
             Connection conn=DBConnection.getConnection();
-            PreparedStatement ps=conn.prepareStatement("insert into category values (?,?,?)");
-            ps.setString(1,"C"+catid);
-            ps.setString(2,title);
-            ps.setString(3,desc);
+            PreparedStatement ps=conn.prepareStatement("insert into category values (?,?)");
+            
+            ps.setString(1,title);
+            ps.setString(2,desc);
             ps.executeUpdate();
             
         }catch(SQLIntegrityConstraintViolationException ex){
@@ -68,7 +68,7 @@ public class CategoryDAO {
             arr=new ArrayList<CategoryPOJO>();
             while(rs.next())
             {
-                cat=new CategoryPOJO(rs.getString("catid"),rs.getString("cattitle"),rs.getString("catdesc"));
+                cat=new CategoryPOJO(rs.getString("cattitle"),rs.getString("catdesc"));
                 arr.add(cat);
             }
             
