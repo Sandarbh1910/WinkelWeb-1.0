@@ -54,6 +54,8 @@ else{
         <link rel="stylesheet" href="CSS/admin.css">
     </head>
     <body>
+        
+        <%@include file="Common_Components/message.jsp" %>
        <!-- Navbar Starts -->
 <nav>
     <div class="mynavbar">

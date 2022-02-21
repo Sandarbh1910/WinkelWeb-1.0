@@ -12,6 +12,11 @@
                 z-index: 10000;
                 min-width: 100vw;
             }
+            
+            a{
+                text-decoration: none !important;
+                color:white;
+            }
         </style>
     </head>
     <body>

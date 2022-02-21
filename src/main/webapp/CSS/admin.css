@@ -5,7 +5,7 @@
 }
 
 a{
-    text-decoration: none;
+    text-decoration: none ;
 }
 
 /*Navbar Code starts here*/
@@ -14,6 +14,7 @@ nav{
     min-width:100%;
     top:0;
     z-index: 100;
+    
 }
 
 .mynavbar{
@@ -29,7 +30,7 @@ nav{
     color:white !important;
     font-size: 25px;
     cursor: pointer;
-    
+    text-decoration: none ;
 }
 
 
@@ -148,6 +149,11 @@ a{
     border-radius:5px;
     color:#670975;
 }
+
+.sidelistitem a:hover{
+   color:white;
+}
+
 
 #sideclosecheckbox{
     display:none;
