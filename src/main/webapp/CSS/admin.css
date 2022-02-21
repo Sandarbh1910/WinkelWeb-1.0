@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=KoHo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Paytone+One&display=swap');
+
+
+
+
+
 *{
     box-sizing: border-box;
     margin:0;
@@ -125,7 +132,7 @@ a{
 }
 
 .sidemain{
-    height:75%;
+    height:65%;
 }
 
 .sidelist{
@@ -170,7 +177,7 @@ a{
 }
 
 .sidebardp{
-    background-color: aqua;
+    background-color: whitesmoke;
     border-radius: 50%;
     width:50px;
     height:50px;
@@ -184,8 +191,7 @@ a{
     padding:5px;
     text-align: center;
     font-family: 'Paytone One', sans-serif;
-    position:relative;
-    bottom:20px;
+    
     color:white;
 }
 
@@ -207,6 +213,8 @@ a{
 
 .sideuserlist ul{
     list-style-type: none;
+    padding:0;
+    margin:0;
 }
 
 .sideuserlistitem{

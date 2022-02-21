@@ -1,6 +1,3 @@
-
-
-
 <%@page import="java.util.ArrayList"%>
 <%@page import="WinkelWeb_POJO.CategoryPOJO"%>
 <%@page import="WinkelWeb_POJO.CategoryPOJO"%>
@@ -212,7 +209,7 @@
             <div class="sidefooter">
               
                
-                <img class="sidebardp" src="./Icons/login_shield.svg" alt="">
+                <img class="sidebardp" src="./Icons/user-solid.svg" alt="">
                 <label for="sidebarusercheckbox" class="sidebarusername">Sandarbh Taran</label>
                
               

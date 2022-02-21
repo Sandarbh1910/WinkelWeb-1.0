@@ -1,4 +1,6 @@
 
+@import url('https://fonts.googleapis.com/css2?family=KoHo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Paytone+One&display=swap');
 
  
             /*Customer.jsp code starts here*/
@@ -341,7 +343,7 @@ a{
 }
 
 .sidebardp{
-    background-color: aqua;
+    background-color: white;
     border-radius: 50%;
     width:50px;
     height:50px;
@@ -378,6 +380,7 @@ a{
 
 .sideuserlist ul{
     list-style-type: none;
+    padding-left:0px !important;
 }
 
 .sideuserlistitem{

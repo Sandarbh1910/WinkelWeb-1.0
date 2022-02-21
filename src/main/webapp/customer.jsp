@@ -129,7 +129,7 @@ else{
             <div class="sidefooter">
               
                
-                <img class="sidebardp" src="./Icons/login_shield.svg" alt="">
+                <img class="sidebardp" src="./Icons/user-solid.svg" alt="">
                 <label for="sidebarusercheckbox" class="sidebarusername"><%=user.getFirstname()+user.getLastname()%></label>
                
               
