@@ -21,20 +21,20 @@ import java.util.ArrayList;
  */
 public class UserDAO {
     
-//     public static int getUserIdCount()
-//    { int usid=-1;
-//        try{
-//        Connection conn=DBConnection.getConnection();
-//        Statement st=conn.createStatement();
-//        ResultSet rs=st.executeQuery("select count(usid) from user_credentials");
-//        rs.next();
-//        usid=rs.getInt(1);
-//        }catch(Exception ex)
-//        {
-//            ex.printStackTrace();
-//        }
-//        return usid++;
-//    }
+     public static int getUserIdCount()
+    { int usid=-1;
+        try{
+        Connection conn=DBConnection.getConnection();
+        Statement st=conn.createStatement();
+        ResultSet rs=st.executeQuery("select count(usid) from user_credentials");
+        rs.next();
+        usid=rs.getInt(1);
+        }catch(Exception ex)
+        {
+            ex.printStackTrace();
+        }
+        return usid;
+    }
     
      
      

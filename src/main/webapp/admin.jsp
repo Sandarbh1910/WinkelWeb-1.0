@@ -126,16 +126,16 @@ else{
    <main id="home">
     <div class="app-stats-bar">
         <div class="users-stat"> <img src="./Icons/customer.png" class="stats-icon" alt="">
-            <h3>Users</h3>
+            <h3>Users</h3><%=UserDAO.getUserIdCount()%>
         </div>
         <div class="category-stat"> <img src="./Icons/categoryimg.png" class="stats-icon" alt="">
-            <h3>categories</h3>
+            <h3>Categories</h3><%=CategoryDAO.getCatidCount()%>
         </div>
         <div class="products-stat"> <img src="./Icons/product.png" class="stats-icon" alt="">
-            <h3> Products</h3>
+            <h3> Products</h3><%%>
         </div>
         <div class="orders-stat"> <img src="./Icons/order.png" class="stats-icon" alt="">
-            <h3>Orders</h3>
+            <h3>Orders</h3><%%>
         </div>
     </div>
 

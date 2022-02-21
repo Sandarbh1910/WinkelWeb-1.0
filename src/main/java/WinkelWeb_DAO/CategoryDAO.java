@@ -20,21 +20,21 @@ import java.util.ArrayList;
  */
 public class CategoryDAO {
     
-//    public static int getCatid()
-//    {
-//        int catid=-1;
-//        try{
-//        Connection conn=DBConnection.getConnection();
-//        Statement st=conn.createStatement();
-//        ResultSet rs=st.executeQuery("select count(catid) from category");
-//        rs.next();
-//        catid=rs.getInt(1);
-//        }catch(Exception ex)
-//        {
-//            ex.printStackTrace();
-//        }
-//        return catid++;
-//    }
+    public static int getCatidCount()
+    {
+        int catid=-1;
+        try{
+        Connection conn=DBConnection.getConnection();
+        Statement st=conn.createStatement();
+        ResultSet rs=st.executeQuery("select count(cattitle) from category");
+        rs.next();
+        catid=rs.getInt(1);
+        }catch(Exception ex)
+        {
+            ex.printStackTrace();
+        }
+        return catid;
+    }
     
     public static String addCategory(String title,String desc)
     {
