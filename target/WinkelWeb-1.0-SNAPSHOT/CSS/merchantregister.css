@@ -81,11 +81,26 @@
 
 }
 
+
+
+.terms{
+    padding:15px 5px;
+    text-align: center;
+    width:100%;
+}
+
+#lbl{
+    font-weight: bolder;
+    color:black;
+   
+
+}
+
 #mrsubmit-btn{
     padding:8px;
     margin-top:8px;
     min-width:70%;
-    background-color: #0d6efd;
+    background-color: #5a9cfe;
     border-radius: 5px;
     color:white;
     font-size: large;

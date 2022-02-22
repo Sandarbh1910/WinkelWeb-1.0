@@ -28,7 +28,14 @@
             <input type="password" id="mrpassword" placeholder="Password" name="mrpassword" class="mrsignup-input">
             <textarea  rows="5" id="mraddress" placeholder="Address" name="mraddress" class="mrsignup-input" style="resize:none;
             width:100%;"></textarea>
-            <input type="submit" value="Continue" id="mrsubmit-btn">
+            <div class="terms">
+                        <input type="checkbox" id="mrsignup-term-checkbox"
+                            onchange="enableSignupBtn()" />
+                        <label for="mrsignup-term-checkbox" id="lbl">I have read all the terms and I agree .
+                        </label>
+                        <hr />
+                    </div>
+            <input type="submit" value="Continue" id="mrsubmit-btn" disabled>
         </form>
 
         <div class="merchant-register-benefits">
@@ -58,6 +65,28 @@
    </footer>
 
 
+    
+     <script>
+        function enableSignupBtn()
+        {
+            let check=document.getElementById('mrsignup-term-checkbox');
+            let btn=document.getElementById('mrsubmit-btn');
+            
+            btn.disabled=!check.checked;
+            console.log('btn is'+btn.disabled);
+            
+            if(btn.disabled)
+            {
+                console.log('to light blue');
+                btn.style.backgroundColor='#5a9cfe';
+            }
+            else {
+                btn.style.backgroundColor='#0d6efd';
+                 console.log('to dark blue');
+            }
+    
+        }
+    </script>
    
 </body>
 </html>

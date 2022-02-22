@@ -102,7 +102,7 @@
                     <div class="terms">
                         <input type="checkbox" id="signup-term-checkbox"
                             onchange="enableSignupBtn()" />
-                        <label for="check" id="lbl">I have read all the terms and I agree .
+                        <label for="signup-term-checkbox" id="lbl">I have read all the terms and I agree .
                         </label>
                         <hr />
                     </div>

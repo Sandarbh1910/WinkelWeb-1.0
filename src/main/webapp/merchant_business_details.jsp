@@ -23,10 +23,16 @@
             <input type="text" id="mrgstnumber" placeholder="GST Number" name="mrgstnumber" class="mrsignup-input">
             <input type="text" id="mraccnumber" placeholder="Account Number" name="mraccnumber" class="mrsignup-input">
             <input type="text" id="mrifsccode" placeholder="IFSC Code" name="mrifsccode" class="mrsignup-input">
-            <input type="email" id="mremail" placeholder="Email" name="mremail" class="mrsignup-input">
             <textarea  rows="5" id="mrfirmaddress" placeholder="Firm Address" class="mrsignup-input" style="resize:none;
             width:100%;" name="mrfirmaddress"></textarea>
-            <input type="submit" value="Continue" id="mrsubmit-btn">
+            <div class="terms">
+                        <input type="checkbox" id="mrbusiness-term-checkbox"
+                            onchange="enableSignupBtn()" />
+                        <label for="mrbusiness-term-checkbox" id="lbl">I/We hereby confirm that the information provided herein is accurate, correct and complete.WinkelWeb is not responsible for any misadventure.
+                        </label>
+                        <hr />
+                    </div>
+            <input type="submit" value="Continue" id="mrsubmit-btn" disabled>
         </form>
 
         <div class="merchant-register-benefits">
@@ -55,5 +61,27 @@
     <div>&copy;2022 WinkelWeb | Sandarbh Taran</div>
    </footer>
 
+     <script>
+        function enableSignupBtn()
+        {
+            let check=document.getElementById('mrbusiness-term-checkbox');
+            let btn=document.getElementById('mrsubmit-btn');
+            
+            btn.disabled=!check.checked;
+            console.log('btn is'+btn.disabled);
+            
+            if(btn.disabled)
+            {
+                console.log('to light blue');
+                btn.style.backgroundColor='#5a9cfe';
+            }
+            else {
+                btn.style.backgroundColor='#0d6efd';
+                 console.log('to dark blue');
+            }
+    
+        }
+    </script>
+    
 </body>
 </html>
