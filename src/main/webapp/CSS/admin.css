@@ -328,6 +328,7 @@ main{
 .add-cat:hover,.rem-cat:hover,.rem-user:hover,.cfeeds:hover,.mfeeds:hover,.block-user:hover,.unblock-user:hover{
     background-image: linear-gradient(to bottom right,#e2e5e7,#ffffff);
     border:1px solid #e1e1e2;
+    color:black !important;
 }
 
 .user{
@@ -360,6 +361,7 @@ main{
     display: inline-block;
     font-size: large;
     font-weight: bold;
+    color:black;
 }
 .footer{
     background-color: #3f4d6a;
@@ -396,12 +398,18 @@ main{
     width:49%;
     text-align: center;
     color:white;
+    
 }
 
 .modal-btns{
     padding:10px;
     width:100%;
     text-align: center;
+    display:flex;
+    justify-content:space-between;
+    align-items: center;
+    flex-wrap:nowrap;
+    
 }
 
 /*Common Modal Code Ends Here*/
@@ -479,15 +487,15 @@ main{
 #add-cat-submit-btn{
     padding:10px;
     width:49%;
-    background-color: #0d6efd;
+    background-color: #6c757d;
     color:white;
-    position: relative;
-    bottom:2px;
+   
+    
 }
 
 #add-cat-submit-btn:hover{
    
-    background-image:linear-gradient(to bottom right,#0d6efd,#5a9cfe);
+    background-color:#00eeae;
 }
 /*Add category Modal ends Here*/
 
@@ -564,6 +572,14 @@ main{
     width:80%;
     border-radius: 4px;
     margin:3px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+}
+
+.rem-cat-input:hover{
+    background-color: #e2e5e7;
 }
 
 #rem-cat-submit-btn{
@@ -571,8 +587,7 @@ main{
     width:49%;
     color:white;
     background-color: #6c757d;
-    position: relative;
-    bottom:2px;
+   
 }
 
 #rem-cat-submit-btn:hover{
@@ -661,8 +676,7 @@ main{
     width:49%;
     color:white;
     background-color: #6c757d;
-    position: relative;
-    bottom:2px;
+    
 }
 
 #rem-user-submit-btn:hover{
@@ -752,19 +766,25 @@ main{
     margin:3px;
 }
 
+#unblock-user-input{
+    
+}
+
 #block-user-submit-btn,#unblock-user-submit-btn{
     padding:10px;
     width:49%;
     color:white;
     background-color: #6c757d;
-    position: relative;
-    bottom:2px;
+    
 }
 
-#block-user-submit-btn:hover,#unblock-user-submit-btn:hover{
+#block-user-submit-btn:hover{
    
     background-color:red;
     
+}
+#unblock-user-submit-btn:hover{
+    background-color:#00eeae;
 }
 
 
@@ -775,10 +795,14 @@ main{
     border-radius: 4px;
     margin:3px;
     text-align: center;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 
-
-.unblock-user-input input{
-    float:left;
+.unblock-user-input:hover{
+    background-color: #e2e5e7;
 }
+
 /*Block/Unblock User Modal ends Here*/

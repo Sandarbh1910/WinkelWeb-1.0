@@ -321,7 +321,7 @@ else{
                    {
                 %>
                    
-                <div class="unblock-user-input"> <input type="checkbox"  name="unblock-user" value="<%=bu.getMob()%>" ><b><span><%=bu.getFirstname()+" "+bu.getLastname()%></span>&nbsp;&nbsp;<span style="float:right;"><%=bu.getMob()%></span></b></div>
+                <div class="unblock-user-input"> <input type="checkbox"  name="unblock-user" value="<%=bu.getMob()%>" ><b><span><%=bu.getFirstname()+" "+bu.getLastname()%></span>&nbsp;&nbsp;<span><%=bu.getMob()%></span></b></div>
                    
                <%
                     }
