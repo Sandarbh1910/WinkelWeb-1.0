@@ -51,7 +51,7 @@ public class LoginServlet extends HttpServlet {
           {
               String utype=user.getUser_type();
               System.out.println("utype "+utype);
-              
+              System.out.println("usid= "+user.getUsid());
               httpsess.setAttribute("current_user",user);
               if(utype.equalsIgnoreCase("customer"))
           {

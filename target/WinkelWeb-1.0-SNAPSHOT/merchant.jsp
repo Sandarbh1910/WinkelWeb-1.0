@@ -1,3 +1,8 @@
+<%@page import="WinkelWeb_DAO.CategoryDAO"%>
+<%@page import="WinkelWeb_POJO.CategoryPOJO"%>
+<%@page import="WinkelWeb_POJO.ProductsPOJO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="WinkelWeb_DAO.ProductDAO"%>
 <%@page import="WinkelWeb_POJO.UserCredentialsPOJO"%>
 
 <%
@@ -72,7 +77,7 @@ else{
     <div class="sidebar">
 
         <label for="sideclosecheckbox">
-            <img src="Icons/closebtn.svg" alt="" width="10" height="10"class="sideclosebtn">
+            <img src="Icons/closebtn.svg" alt="" width="10" height="10" class="sideclosebtn">
         </label>
 
         <div class="sidehead">
@@ -86,6 +91,7 @@ else{
                 <li class="sidelistitem"><a href="">Home</a></li>
                 <li class="sidelistitem"><a href="">Orders</a></li>
                 <li class="sidelistitem"><a href="">Cart</a></li>
+                <li class="sidelistitem"><label for="inventory-tab-radio">Inventory</label></li>
                 <li class="sidelistitem"><a href="">Customer Services</a></li>
 
             </ul>
@@ -141,22 +147,29 @@ else{
 
         <div class="business-page-body">
             <div class="option">
-                <div class="add-prod">
+               <label for="add-prod-tab-radio" class="add-prod">
+                    <img src="Icons/addprodshelf.png" alt="">
                     Add Product
-                </div>
-                <div class="rem-prod">
-                    Remove Product
-                </div>
+                </label>
+                <label for="update-modal-checkbox" class="update-prod">
+                    <img src="Icons/update.png" alt="">
+                    Update Product</label>
             </div>
             
             <div class="option">
-                <div class="disc-prod">Discount Product</div>
-                <div class="disc-all-prod">Discount All Products</div>
+                <label for="disc-prod-modal-checkbox" class="disc-prod">
+                    <img src="Icons/discount.png" alt="">
+                    Discount Product</label>
+                <label for="disc-all-prod-modal-checkbox" class="disc-all-prod">
+                    <img src="Icons/discountall.png" alt="">
+                    Discount All Products</label>
             </div>
             
             <div class="option">
-                <div class="update-prod">Update Product</div>
-                <a href="" class="complain">Complain/Feedbacks</a>
+                
+                <a href="" class="complain">
+                    <img src="Icons/help.png" alt="">
+                    Complain/Feedbacks</a>
             </div>
             
 
@@ -172,12 +185,268 @@ else{
 shopping gives me pleasure
     </div>
     <!-- shopping tab ends here -->
+
+
+<!-- Inventory tab starts here -->
+<input type="radio" id="inventory-tab-radio" name="mytab">
+<div class="inventory-tab-page">
+My Inventory
+</div>
+<!-- Inventory tab ends here -->
+
+
+
+
+<!-- Add Products  tab starts here -->
+<input type="radio" id="add-prod-tab-radio" name="mytab">
+<div class="add-prod-tab-page">
+
+<div class="add-prod-page-body">
+    <form action="AddProductServlet" id="add-prod-form">
+        <input type="text" class="add-prod-input" placeholder="Product Title" autofocus required name="ptitle">
+                    <label for="prod-pic" id="prod-pic-icon"><img src="Icons/upload pic.png" alt=""><span>Select pictures
+                            maximum 5 in jpeg format</span></label>
+
+                    <input type="file"  name="ppic" multiple id="prod-pic" accept=".jpeg,.jpg">
+                    <div class="img-prev-container"></div>
+                    <textarea name="pdesc" id="" cols="30" rows="5" class="add-prod-input"
+                        placeholder="Product Description" required></textarea>
+                    <input type="text" name="pprice" class="add-prod-input" placeholder="Price" required>
+                    <input type="text" name="pdisc" class="add-prod-input" placeholder="Discount" required>
+                    <input type="text" name="pquant" class="add-prod-input" placeholder="Quantity" required>
+                    <select name="pcat" class="add-prod-input" id="" required>
+                    <%ArrayList<CategoryPOJO>catlist=CategoryDAO.loadCategory();
+            if(catlist!=null)
+            {
+                for(CategoryPOJO c:catlist)
+                {
+                
+                %>
+           
+            <option value=""><%=c.getCatTitle()%></option>
+            <%
+                } 
+            }
+            %>
+                    </select>
+                    <input type="submit" id="add-prod-submit-btn" value="Add Product">
+                </form>
+</div>
+</div>
+<!-- Add Products tab ends here -->
+
+
 </main>
 
 
+<!-- Update Product modal starts -->
 
-<script>
-   
-</script>
+ 
+ <input type="checkbox" id="update-modal-checkbox">
+ <div class="update-modal-black-screen">
+     <div class="update-modal">
+         <div class="modal-header">
+             Update Product Details
+            <label for="update-modal-checkbox"> <img src="./Icons/closebtn.svg" alt="" class="close-update-modal-btn" /></label>
+         </div>
+         <hr>
+
+         <div class="update-modal-body modal-body">
+             <!-- <img src="./Icons/login_shield.svg" width="50" height="50" alt="" /> -->
+             <form action="UpdateProductDetailsServlet" class="update">
+                 
+                 <input type="text" placeholder="Product Name" name="uppname" class="update-input" id="uppname" required/>
+                 <input type="text" placeholder="Product Description" name="updesc" class="update-input" id="updesc" required/>
+                 <input type="number" placeholder="Price" name="upprice" class="update-input" id="upprice" required/>
+                 <input type="number" placeholder="Quantity" name="upquan" class="update-input" id="upquan" required/>
+                 
+                 
+
+                 <div class="modal-footer">
+                     <label id="close-update-modal-lbl"  for="update-modal-checkbox" >
+                         Close
+                     </label>
+                     <input type="submit" id="update-submit-btn" value="Update" />
+                 </div>
+             </form>
+         </div>
+     </div>
+ </div>
+
+ 
+
+<!-- Update Product Modal Ends Here -->
+
+
+
+
+
+
+
+<!-- Discount Product modal starts -->
+
+ 
+<input type="checkbox" id="disc-prod-modal-checkbox">
+<div class="disc-prod-modal-black-screen">
+    <div class="disc-prod-modal">
+        <div class="modal-header">
+            Discount Product
+           <label for="disc-prod-modal-checkbox"> <img src="./Icons/closebtn.svg" alt="" class="close-disc-prod-modal-btn" /></label>
+        </div>
+        <hr>
+
+        <div class="disc-prod-modal-body modal-body">
+            <!-- <img src="./Icons/login_shield.svg" width="50" height="50" alt="" /> -->
+            <%ArrayList<String>pidlist=ProductDAO.loadPid(user.getUsid());%>
+            <form action="DiscountProductServlet" class="discount">
+                <select name="dpid" id="pidselectbox">
+                    <%
+                        for(String pid:pidlist)
+                        {
+                    %>
+                    <option value="<%=pid%>"><%=pid%></option>
+                    <%
+                        }
+                    %>
+                </select>
+                <input type="number" placeholder="%" name="disc-per" class="disc-input" id="disc-per" required/>
+               
+
+                <div class="modal-footer">
+                    <label id="close-disc-prod-modal-lbl"  for="disc-prod-modal-checkbox" >
+                        Close
+                    </label>
+                    <input type="submit" id="disc-prod-submit-btn" value="Update" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Discount Product Modal Ends Here -->
+
+
+
+
+
+
+
+<!-- Discount All Products modal starts -->
+
+ 
+<input type="checkbox" id="disc-all-prod-modal-checkbox">
+<div class="disc-all-prod-modal-black-screen">
+    <div class="disc-all-prod-modal">
+        <div class="modal-header">
+            Common Discount
+           <label for="disc-all-prod-modal-checkbox"> <img src="./Icons/closebtn.svg" alt="" class="close-disc-all-prod-modal-btn" /></label>
+        </div>
+        <hr>
+
+        <div class="disc-all-prod-modal-body modal-body">
+            <!-- <img src="./Icons/login_shield.svg" width="50" height="50" alt="" /> -->
+            <form action="DiscountAllProductsServlet" class="discount-all">
+                <input type="number" placeholder="%" name="disc-all-per" class="disc-input" id="disc-all-per" required/>
+                
+
+                <div class="modal-footer">
+                    <label id="close-disc-all-prod-modal-lbl"  for="disc-all-prod-modal-checkbox" >
+                        Close
+                    </label>
+                    <input type="submit" id="disc-all-prod-submit-btn" value="Update" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Discount All Products Modal Ends Here -->
+
+
+
+
+
+
+    <script>
+
+        const input = document.querySelector('#prod-pic');
+
+        // Listen for files selection
+        input.addEventListener('change', function () {
+            // Retrieve all files
+            const myfiles = input.files;
+
+            // Checking files count
+            if (myfiles.length > 5) {
+                alert(`Only 5 images are allowed to upload.`);
+                input.value = '';
+                console.log(input.value);
+                return;
+            }
+            console.log(input.value);
+            loadImg();
+            if (myfiles.length !== 0)
+                document.getElementById('prod-pic-icon').style.display = "none";
+
+
+
+
+
+        });
+
+
+
+
+
+        // Load Img 
+        var images = [];
+        function loadImg() {
+            const myfiles = input.files;
+            for (i = 0; i < myfiles.length; i++) {
+                images.push({
+                    "name": myfiles[i].name,
+                    "url": URL.createObjectURL(myfiles[i]),
+                    "file": myfiles[i]
+                });
+            }
+
+            document.querySelector('.img-prev-container').innerHTML = prevImg();
+        }
+
+
+        // Preview Img
+        function prevImg() {
+            const myfiles = input.files;
+            var img = "";
+            for (i = 0; i < images.length; i++) {
+                img += `<div class="prev-img-box"><img class="del-prod-pic-btn" onclick="delProdPic(` + i + `)" src="Icons/closebtn.svg"><img class="prev-img" src="` + images[i].url + `"></div>`
+            }
+            console.log("img= " + img);
+            return img;
+
+        }
+
+
+        function delProdPic(e) {
+            images.splice(e, 1);
+
+            document.querySelector('.img-prev-container').innerHTML = prevImg();
+            var myfiles = input.files;
+            console.log("file len= " + myfiles.length);
+            if (images.length == 0) {
+                document.getElementById('prod-pic-icon').style.display = "flex";
+                input.value = "";
+                console.log(input.value);
+            }
+        }
+
+    </script>
+
+
+
 </body>
 </html>

@@ -114,8 +114,10 @@ public class UserDAO {
             ResultSet rs=ps.executeQuery();
             if(rs.next())
             {
-                UserCredentialsPOJO user=new UserCredentialsPOJO(rs.getString("firstname"),rs.getString("lastname"),rs.getString("mob"),rs.getString("dob"),rs.getString("email"),rs.getString("password"),rs.getString("address"),rs.getString("user_type"));
-               if(rs.getString("user_status").equalsIgnoreCase("deactive"))
+                System.out.println("got id password");
+                UserCredentialsPOJO user=new UserCredentialsPOJO(rs.getString(1),rs.getString("firstname"),rs.getString("lastname"),rs.getString("mob"),rs.getString("dob"),rs.getString("email"),rs.getString("password"),rs.getString("address"),rs.getString("user_type"));
+                System.out.println(user+"in login user");
+                if(rs.getString("user_status").equalsIgnoreCase("deactive"))
                    return null;
                 return user;
             }
@@ -191,7 +193,7 @@ public class UserDAO {
             arr=new ArrayList<UserCredentialsPOJO>();
             while(rs.next())
             {
-                user=new UserCredentialsPOJO(rs.getString("firstname"),rs.getString("lastname"),rs.getString("mob"),rs.getString("dob"),rs.getString("email"),null,rs.getString("address"),rs.getString("user_type"));
+                user=new UserCredentialsPOJO(rs.getString("usid"),rs.getString("firstname"),rs.getString("lastname"),rs.getString("mob"),rs.getString("dob"),rs.getString("email"),null,rs.getString("address"),rs.getString("user_type"));
                 arr.add(user);
             }
             

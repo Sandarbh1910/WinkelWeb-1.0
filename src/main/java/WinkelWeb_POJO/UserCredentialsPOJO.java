@@ -10,6 +10,7 @@ package WinkelWeb_POJO;
  * @author sanda
  */
 public class UserCredentialsPOJO {
+    private String usid;
      private String firstname;
     private String lastname;
     private String mob;       
@@ -22,9 +23,17 @@ public class UserCredentialsPOJO {
 
     @Override
     public String toString() {
-        return "UserCredentialsPOJO{" + "firstname=" + firstname + ", lastname=" + lastname + ", mob=" + mob + ", dob=" + dob + ", email=" + email + ", password=" + password + ", address=" + address + ", user_type=" + user_type + ", user_dp=" + user_dp + '}';
+        return "UserCredentialsPOJO{" +"usid="+usid+ ", firstname=" + firstname + ", lastname=" + lastname + ", mob=" + mob + ", dob=" + dob + ", email=" + email + ", password=" + password + ", address=" + address + ", user_type=" + user_type + ", user_dp=" + user_dp + '}';
     }
 
+    public String getUsid() {
+        return usid;
+    }
+
+    public void setUsid(String usid) {
+        this.usid = usid;
+    }
+    
     public String getFirstname() {
         return firstname;
     }
@@ -97,7 +106,20 @@ public class UserCredentialsPOJO {
         this.user_dp = user_dp;
     }
 
-    public UserCredentialsPOJO(String firstname, String lastname, String mob, String dob, String email, String password, String address, String user_type) {
+    public UserCredentialsPOJO(String usid, String firstname, String lastname, String mob, String dob, String email, String password, String address, String user_type) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.mob = mob;
+        this.dob = dob;
+        this.email = email;
+        this.password = password;
+        this.address = address;
+        this.user_type = user_type;
+        this.usid = usid;
+    }
+    
+    
+    public UserCredentialsPOJO( String firstname, String lastname, String mob, String dob, String email, String password, String address, String user_type) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.mob = mob;

@@ -112,16 +112,8 @@ nav{
 
 
 
-#business-tab-radio:checked .business-tab{
-    background-color:orange;
 
 
-}
-
-.shopping-tab:visited{
-    background-color:white;
-
-}
 
 
 /*Navbar Code ends here*/ 
@@ -299,21 +291,40 @@ a{
             main{
                 width:100vw;
                 min-width:250px;
-                min-height: 100vh;
                 position:absolute;
                 padding:10px;
                 top:120px;
+                min-height: 85vh;
+                background-image: url('../Background Img/background2.png');
             }
 
             
 
-            .business-tab-page,.shopping-tab-page{
+            .business-tab-page,.shopping-tab-page,.inventory-tab-page{
                 min-width:100%;
                 min-height:100%;
             }
 
 
+            #inventory-tab-radio{
+                display:none;
+            }
+            
+            .inventory-tab-page{
+                display:none;
+            }
+            
+            
+            #inventory-tab-radio:checked ~ .inventory-tab-page{
+                display:block;
+            
+            }
 
+            
+            
+            
+            
+           
             
 .app-stats-bar{
     display:flex;
@@ -385,12 +396,468 @@ a{
     flex-wrap: wrap;
 }
 
-.business-page-body .option{
+.option{
     border:1px solid black;
     padding:10px;
-    height:60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width:300px;
 
 }
 
+.add-prod,.rem-prod,.disc-prod,.disc-all-prod,.update-prod,.complain{
+
+    width:100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-prod img,.rem-prod img,.disc-prod img,.disc-all-prod img,.update-prod img,.complain img{
+
+    width:30%;
+    
+}
 
 /* Business page ends here */
+
+
+
+
+
+/* Add Products Page Starts Here */
+
+.add-prod-page-body {
+  min-width: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#add-prod-form {
+  padding: 20px;
+  width: 45%;
+  border: 2px solid #e2e5e7;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius:15px;
+  min-width: 250px;
+}
+.add-prod-input {
+  width: 80%;
+  margin: auto;
+  margin-top: 15px;
+  padding: 10px;
+  border: 2px solid #e1e1e2;
+  border-radius: 5px;
+  min-width: 150px;
+  resize: none;
+}
+#prod-pic-icon{
+   
+    padding:20px;
+    margin-top:10px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+#prod-pic-icon span{
+    width:100%;
+}
+
+#prod-pic-icon img{
+    width:80px;
+    height:80px;
+    margin:auto;
+    border:1px dashed #e1e1e2;
+    padding:5px;
+}
+#prod-pic{
+    display:none;
+}
+
+.img-prev-container{
+    display:flex;
+    justify-content: flex-start;
+    padding:5px;
+    width:80%;
+}
+
+.prev-img-box{
+    width:80px;
+    height:80px;
+    border:1px dashed #0d6efd;
+    margin:2px;
+    border-radius:5px;
+}
+
+.prev-img {
+   
+    width:100%;
+    position:relative;
+    object-fit: contain;
+    
+}
+
+.del-prod-pic-btn{
+   float:right;
+   
+   
+   
+}
+
+#add-prod-submit-btn{
+    background-color:#0d6efd;
+    color:white;
+    padding:10px;
+    border-radius:5px;
+    min-width:220px;
+    margin-top:10px;
+    border:2px solid #0d6efd
+}
+
+.add-prod-input:focus {
+    box-shadow: 0px 0px 80px 10px #e1e1e2;
+  }
+
+#add-prod-tab-radio {
+  display: none;
+}
+
+.add-prod-tab-page {
+  display: none;
+}
+
+#add-prod-tab-radio:checked ~ .add-prod-tab-page {
+  display: block;
+}
+
+/* Add Products Page Ends Here */
+
+
+/* Common modal code starts */
+.modal-body{
+    display:flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    
+    
+}
+
+.modal-header{
+    padding:15px;
+}
+
+.modal-body form{
+    display:flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    padding:10px;
+    
+    
+}
+
+.modal-footer{
+    margin-top:20px;
+}
+
+#disc-all-prod-modal-checkbox,#disc-prod-modal-checkbox,#update-modal-checkbox{
+    display: none;
+}
+
+
+
+
+/* Common modal code ends */
+
+
+
+
+/* Update Product modal code begins */
+
+.update-modal-black-screen{
+    width:100vw;
+    height:100%;
+    position:fixed;
+    top:0;
+    background-color: rgba(0,0,0,0.8);
+    display:none;
+    z-index:5;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+
+
+
+
+.update-modal{
+    max-width:32vw;
+    min-height: 45vh;
+    min-width: 250px;
+    color:black;
+    background-color: white;
+    margin:auto;
+    position:relative;
+    top:180px;
+    border-radius: 3px;
+    opacity:1;
+    
+    
+}
+
+
+
+
+.close-update-modal-btn{
+    float:right;
+}
+
+#close-update-modal-lbl{
+    padding:10px 15px;
+    background-color: #6c757d;
+    color:white;
+    border-radius: 5px;
+    position:relative;
+    top:1px;
+}
+
+
+#update-submit-btn{
+    padding:10px;
+    background-color: #0d6efd;
+    color:white;
+    border-radius: 5px;
+    margin-left:10px;
+    border:0px;
+}
+
+#update-modal-checkbox:checked ~ .update-modal-black-screen
+{
+    display:block;
+}
+
+
+.update-input{
+      margin:auto;
+    margin-top:15px;
+    padding:10px;
+    border:2px solid #e1e1e2;
+    border-radius:5px;
+    min-width:150px;
+    width:100%;
+}
+
+
+#pidselectbox{
+    min-width:100px;
+}
+
+
+.update-input:focus{
+    box-shadow: 0px 0px 80px  10px #e1e1e2 ;
+    
+}
+
+
+
+/* Update Product modal ends here */
+
+
+
+
+
+
+
+/* Discount Product modal code begins */
+
+.disc-prod-modal-black-screen{
+    width:100vw;
+    height:100%;
+    position:fixed;
+    top:0;
+    background-color: rgba(0,0,0,0.8);
+    display:none;
+    z-index:5;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+
+
+
+
+.disc-prod-modal{
+    max-width:32vw;
+    min-height: 45vh;
+    min-width: 250px;
+    color:black;
+    background-color: white;
+    margin:auto;
+    position:relative;
+    top:180px;
+    border-radius: 3px;
+    opacity:1;
+    
+    
+}
+
+
+
+
+.close-disc-prod-modal-btn{
+    float:right;
+}
+
+#close-disc-prod-modal-lbl{
+    padding:10px 15px;
+    background-color: #6c757d;
+    color:white;
+    border-radius: 5px;
+    position:relative;
+    top:1px;
+}
+
+
+#disc-prod-submit-btn{
+    padding:10px;
+    background-color: #0d6efd;
+    color:white;
+    border-radius: 5px;
+    margin-left:10px;
+    border:0px;
+}
+
+#disc-prod-modal-checkbox:checked ~ .disc-prod-modal-black-screen
+{
+    display:block;
+}
+
+
+
+.disc-input{
+      margin:auto;
+    margin-top:15px;
+    padding:10px;
+    border:2px solid #e1e1e2;
+    border-radius:5px;
+    min-width:150px;
+}
+
+
+#disc-per{
+    min-width:100%;
+}
+
+
+.disc-input:focus{
+    box-shadow: 0px 0px 80px  10px #e1e1e2 ;
+    
+}
+
+
+
+/* Discount Product modal ends here */
+
+
+
+
+
+/* Discount All Products modal code begins */
+
+.disc-all-prod-modal-black-screen{
+    width:100vw;
+    height:100%;
+    position:fixed;
+    top:0;
+    background-color: rgba(0,0,0,0.8);
+    display:none;
+    z-index:5;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+
+
+
+
+.disc-all-prod-modal{
+    max-width:32vw;
+    min-height: 45vh;
+    min-width: 250px;
+    color:black;
+    background-color: white;
+    margin:auto;
+    position:relative;
+    top:180px;
+    border-radius: 3px;
+    opacity:1;
+    
+    
+}
+
+
+
+
+.close-disc-all-prod-modal-btn{
+    float:right;
+}
+
+#close-disc-all-prod-modal-lbl{
+    padding:10px 15px;
+    background-color: #6c757d;
+    color:white;
+    border-radius: 5px;
+    position:relative;
+    top:1px;
+}
+
+
+#disc-all-prod-submit-btn{
+    padding:10px;
+    background-color: #0d6efd;
+    color:white;
+    border-radius: 5px;
+    margin-left:10px;
+    border:0px;
+}
+
+#disc-all-prod-modal-checkbox:checked ~ .disc-all-prod-modal-black-screen
+{
+    display:block;
+}
+
+
+.disc-all-per{
+      margin:auto;
+    margin-top:15px;
+    padding:10px;
+    border:2px solid #e1e1e2;
+    border-radius:5px;
+    min-width:150px;
+}
+
+
+#disc-all-per{
+    width:100%;
+}
+
+
+.disc-all-per:focus{
+    box-shadow: 0px 0px 80px  10px #e1e1e2 ;
+    
+}
+
+
+
+/* Discount All Products modal ends here */

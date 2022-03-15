@@ -36,6 +36,18 @@
         <servlet-name>UnblockUserServlet</servlet-name>
         <servlet-class>com.mycompany.winkelweb.UnblockUserServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UpdateProductDetailsServlet</servlet-name>
+        <servlet-class>com.mycompany.winkelweb.UpdateProductDetailsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DiscountAllProductsServlet</servlet-name>
+        <servlet-class>com.mycompany.winkelweb.DiscountAllProductsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DiscountProductServlet</servlet-name>
+        <servlet-class>com.mycompany.winkelweb.DiscountProductServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CustomerRegistrationServlet</servlet-name>
         <url-pattern>/CustomerRegistrationServlet</url-pattern>
@@ -71,6 +83,18 @@
     <servlet-mapping>
         <servlet-name>UnblockUserServlet</servlet-name>
         <url-pattern>/UnblockUserServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateProductDetailsServlet</servlet-name>
+        <url-pattern>/UpdateProductDetailsServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DiscountAllProductsServlet</servlet-name>
+        <url-pattern>/DiscountAllProductsServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DiscountProductServlet</servlet-name>
+        <url-pattern>/DiscountProductServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

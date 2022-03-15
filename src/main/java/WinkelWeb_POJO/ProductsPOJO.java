@@ -12,6 +12,13 @@ package WinkelWeb_POJO;
 public class ProductsPOJO {
     private String pId;
     private String pTitle;
+
+    public ProductsPOJO(String pTitle, String pDesc, int pPrice, int pQuant) {
+        this.pTitle = pTitle;
+        this.pDesc = pDesc;
+        this.pPrice = pPrice;
+        this.pQuant = pQuant;
+    }
     private String pDesc;
     private String pPic;
     private int    pPrice;
