@@ -1,3 +1,4 @@
+<%@page import="WinkelWeb_DAO.UserDAO"%>
 <%@page import="WinkelWeb_DAO.CategoryDAO"%>
 <%@page import="WinkelWeb_POJO.CategoryPOJO"%>
 <%@page import="WinkelWeb_POJO.ProductsPOJO"%>
@@ -125,19 +126,43 @@ else{
 
 <main id="home">
 
+<%ArrayList<Integer>pidlist=ProductDAO.loadPid(user.getUsid());
+ArrayList<ProductsPOJO>prodlist=ProductDAO.getProducts();%>
+
+    
+<script>
+    var productlist=[];
+    <%
+
+ for(int i=0;i<prodlist.size();i++)
+   {
+      %> 
+          productlist[<%=i%>]={"pid":"<%=prodlist.get(i).getpId()%>",
+              "name":"<%=prodlist.get(i).getpTitle()%>",
+           "description":"<%=prodlist.get(i).getpDesc()%>",
+           "price":"<%=prodlist.get(i).getpPrice()%>",
+           "quantity":"<%=prodlist.get(i).getpQuant()%>"};
+      <%
+   }
+
+%>
+   </script>
+  
+
+
 
     <!-- Business tab Starts here -->
     <input type="radio"  id="business-tab-radio" name="mytab" checked  onchange="adaptColor()">
     <div class="business-tab-page">
         <div class="app-stats-bar">
             <div class="users-stat"> <img src="Icons/customer.png" class="stats-icon" alt="">
-                <h3>Users</h3>5
+                <h3>Users</h3><%=UserDAO.getUserIdCount()%>
             </div>
             <div class="category-stat"> <img src="Icons/categoryimg.png" class="stats-icon" alt="">
-                <h3>Categories</h3>4
+                <h3>Categories</h3><%=CategoryDAO.getCatidCount()%>
             </div>
             <div class="products-stat"> <img src="Icons/product.png" class="stats-icon" alt="">
-                <h3> Products</h3>6
+                <h3> Products</h3><%=ProductDAO.getProductCount()%>
             </div>
             <div class="orders-stat"> <img src="Icons/order.png" class="stats-icon" alt="">
                 <h3>Orders</h3>3
@@ -223,7 +248,7 @@ My Inventory
                 
                 %>
            
-            <option value=""><%=c.getCatTitle()%></option>
+            <option value="<%=c.getCatTitle()%>"><%=c.getCatTitle()%></option>
             <%
                 } 
             }
@@ -254,7 +279,16 @@ My Inventory
          <div class="update-modal-body modal-body">
              <!-- <img src="./Icons/login_shield.svg" width="50" height="50" alt="" /> -->
              <form action="UpdateProductDetailsServlet" class="update">
-                 
+                 <select name="uppid" class="update-input" id="pidselectbox" onchange="showProductDetails()">
+                    <%
+                        for(int pid:pidlist)
+                        {
+                    %>
+                    <option value="<%=pid%>"><%=pid%></option>
+                    <%
+                        }
+                    %>
+                </select>
                  <input type="text" placeholder="Product Name" name="uppname" class="update-input" id="uppname" required/>
                  <input type="text" placeholder="Product Description" name="updesc" class="update-input" id="updesc" required/>
                  <input type="number" placeholder="Price" name="upprice" class="update-input" id="upprice" required/>
@@ -297,11 +331,11 @@ My Inventory
 
         <div class="disc-prod-modal-body modal-body">
             <!-- <img src="./Icons/login_shield.svg" width="50" height="50" alt="" /> -->
-            <%ArrayList<String>pidlist=ProductDAO.loadPid(user.getUsid());%>
+            
             <form action="DiscountProductServlet" class="discount">
-                <select name="dpid" id="pidselectbox">
+                <select name="dpid" class="disc-input" id="pidselectbox">
                     <%
-                        for(String pid:pidlist)
+                        for(int pid:pidlist)
                         {
                     %>
                     <option value="<%=pid%>"><%=pid%></option>
@@ -443,6 +477,25 @@ My Inventory
                 console.log(input.value);
             }
         }
+        
+        
+        function showProductDetails()
+        {
+           var pidfrombox=document.getElementById("pidselectbox").value;
+           
+           var name=document.getElementById("uppname");
+           var desc=document.getElementById("updesc");
+           var price=document.getElementById("upprice");
+           var quantity=document.getElementById("upquan");
+           var index=productlist.findIndex((e)=>e.pid==pidfrombox);
+           var product=productlist[index];
+           name.value=product.name;
+           desc.value=product.description;
+           price.value=product.price;
+           quantity.value=product.quantity;
+            
+        }
+       
 
     </script>
 

@@ -1,3 +1,4 @@
+<%@page import="WinkelWeb_DAO.ProductDAO"%>
 <%@page import="WinkelWeb_DAO.UserDAO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="WinkelWeb_POJO.CategoryPOJO"%>
@@ -134,7 +135,7 @@ else{
             <h3>Categories</h3><%=CategoryDAO.getCatidCount()%>
         </div>
         <div class="products-stat"> <img src="./Icons/product.png" class="stats-icon" alt="">
-            <h3> Products</h3><%%>
+            <h3> Products</h3><%=ProductDAO.getProductCount()%>
         </div>
         <div class="orders-stat"> <img src="./Icons/order.png" class="stats-icon" alt="">
             <h3>Orders</h3><%%>

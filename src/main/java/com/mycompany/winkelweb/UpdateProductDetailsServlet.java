@@ -36,12 +36,13 @@ public class UpdateProductDetailsServlet extends HttpServlet {
         HttpSession httpsess=request.getSession();
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+            int pid=Integer.parseInt(request.getParameter("uppid"));
             String pname=request.getParameter("uppname");
         String pdesc=request.getParameter("updesc");
         int pprice=Integer.parseInt(request.getParameter("upprice"));
         int pquant=Integer.parseInt(request.getParameter("upquan"));
         ProductsPOJO p=new ProductsPOJO(pname,pdesc,pprice,pquant);
-        String res=ProductDAO.updateProductDetails(p);
+        String res=ProductDAO.updateProductDetails(p,pid);
         if(res.equalsIgnoreCase("Product details Updated!"))
         { httpsess.setAttribute("message",res);
             httpsess.setAttribute("dcol","2");

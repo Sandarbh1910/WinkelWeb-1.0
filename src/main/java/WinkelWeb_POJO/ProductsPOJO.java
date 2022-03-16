@@ -35,6 +35,20 @@ public class ProductsPOJO {
         this.pQuant = pQuant;
     }
 
+    public ProductsPOJO( String pTitle, String pDesc, String pPic, int pPrice, int pDisc, int pQuant) {
+       
+        this.pTitle = pTitle;
+        this.pDesc = pDesc;
+        this.pPic = pPic;
+        this.pPrice = pPrice;
+        this.pDisc = pDisc;
+        this.pQuant = pQuant;
+    }
+
+    @Override
+    public String toString() {
+        return "ProductsPOJO{" + "pId=" + pId + ", pTitle=" + pTitle + ", pDesc=" + pDesc + ", pPic=" + pPic + ", pPrice=" + pPrice + ", pDisc=" + pDisc + ", pQuant=" + pQuant + '}';
+    }
     public String getpId() {
         return pId;
     }

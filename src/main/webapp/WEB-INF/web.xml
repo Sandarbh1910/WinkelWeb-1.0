@@ -48,6 +48,10 @@
         <servlet-name>DiscountProductServlet</servlet-name>
         <servlet-class>com.mycompany.winkelweb.DiscountProductServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddProductServlet</servlet-name>
+        <servlet-class>com.mycompany.winkelweb.AddProductServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CustomerRegistrationServlet</servlet-name>
         <url-pattern>/CustomerRegistrationServlet</url-pattern>
@@ -95,6 +99,10 @@
     <servlet-mapping>
         <servlet-name>DiscountProductServlet</servlet-name>
         <url-pattern>/DiscountProductServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddProductServlet</servlet-name>
+        <url-pattern>/AddProductServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

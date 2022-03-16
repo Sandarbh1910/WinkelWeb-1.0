@@ -5,6 +5,7 @@
  */
 package Helper;
 
+import WinkelWeb_POJO.ProductsPOJO;
 import WinkelWeb_POJO.UserCredentialsPOJO;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -89,5 +90,15 @@ public class Validation {
         if(title.length()!=0&&desc.length()!=0)
         {return true;}
         return false;
+    }
+    
+    
+    public static boolean addProductDataEmptyValidation(ProductsPOJO prod)
+    {
+        if(prod.getpTitle().isEmpty()||prod.getpDesc().isEmpty()||prod.getpPrice()==0||prod.getpQuant()==0||prod.getpDisc()==0)
+        {
+            return false;
+        }
+        return true;
     }
 }

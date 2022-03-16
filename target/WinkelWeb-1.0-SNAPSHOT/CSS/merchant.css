@@ -495,9 +495,9 @@ a{
 .prev-img-box{
     width:80px;
     height:80px;
-    border:1px dashed #0d6efd;
+    border:2px solid #00eeae;
     margin:2px;
-    border-radius:5px;
+    border-radius:3px;
 }
 
 .prev-img {
@@ -510,6 +510,9 @@ a{
 
 .del-prod-pic-btn{
    float:right;
+   background-color: whitesmoke;
+   border-radius:50%;
+   cursor:pointer;
    
    
    
@@ -752,12 +755,11 @@ a{
     border:2px solid #e1e1e2;
     border-radius:5px;
     min-width:150px;
+    width:100%;
 }
 
 
-#disc-per{
-    min-width:100%;
-}
+
 
 
 .disc-input:focus{

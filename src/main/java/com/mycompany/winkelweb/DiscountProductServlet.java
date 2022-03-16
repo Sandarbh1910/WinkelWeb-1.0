@@ -36,7 +36,7 @@ public class DiscountProductServlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             int perc=Integer.parseInt(request.getParameter("disc-per"));
-            String pid=request.getParameter("dpid");
+            int pid=Integer.parseInt(request.getParameter("dpid"));
             boolean res=ProductDAO.discountProductAt(perc,pid);
             if(res)
             { httpsess.setAttribute("message",res);
