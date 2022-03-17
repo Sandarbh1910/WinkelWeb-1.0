@@ -5,21 +5,27 @@
  */
 package com.mycompany.winkelweb;
 
+import Helper.UploadData;
 import Helper.Validation;
 import WinkelWeb_DAO.ProductDAO;
 import WinkelWeb_POJO.ProductsPOJO;
 import WinkelWeb_POJO.UserCredentialsPOJO;
+import java.io.File;
 import java.io.IOException;
+import java.util.Collection;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
 /**
  *
  * @author sanda
- */
+ */@javax.servlet.annotation.MultipartConfig(fileSizeThreshold=1024 * 1024 * 2 //2 MB
+         ,maxFileSize=1024 * 1024 * 10 //10MB
+         )
 public class AddProductServlet extends HttpServlet {
 
     /**
@@ -33,7 +39,7 @@ public class AddProductServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
+        response.setContentType("text/html;charset=UTF-8;multipart/form-data");
         HttpSession httpsess=request.getSession();
         try  {
            String ptitle=request.getParameter("ptitle");
@@ -53,7 +59,49 @@ public class AddProductServlet extends HttpServlet {
                return;
            }
             System.out.println("In add prod servlet= "+prod+"  "+pcat+"  "+seller);
+//            Saving Product Image
+              Collection<Part>prodPics=request.getParts();
+              System.out.println("ProdPics "+prodPics);
+              String path="";
+              String filepath="";
+              String filename="";
+              
+              System.out.println("Path before = "+request.getRealPath("ProductImages"));
+              System.out.println("File separator "+File.separator);
+              System.out.println("Product id= "+ProductDAO.getNewProductId());
+               path=request.getRealPath("ProductImages")+File.separator+"Product"+ProductDAO.getNewProductId();
+              System.out.println("Path after = "+path);
+              for(Part pic:prodPics)
+              {System.out.println("PIC= "+pic);
+              filepath=""+path;
+              
+                  System.out.println("filename= "+pic.getSubmittedFileName());
+                  filename=pic.getSubmittedFileName();
+                  if(filename!=null)
+                  {
+//                     
+                  File f=new File(path);
+                  if(!f.exists())
+                  f.mkdir();
+                             filepath=filepath.concat(File.separator+filename);
+                  
+                  f.setWritable(true);
+                  System.out.println("filePath= "+filepath);
+                  
+                  UploadData.uploadData(filepath,pic.getInputStream());}
+              }
+
+
+
+
+
+
+
+
+//            Saving Product Details
            String res=ProductDAO.addProduct(prod,pcat,seller);
+           
+           
            if(res.equalsIgnoreCase("Product Added Successfully!"))
            {
                httpsess.setAttribute("message",res);

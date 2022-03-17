@@ -227,7 +227,7 @@ My Inventory
 <div class="add-prod-tab-page">
 
 <div class="add-prod-page-body">
-    <form action="AddProductServlet" id="add-prod-form">
+    <form action="AddProductServlet" id="add-prod-form" enctype="multipart/form-data" method="POST">
         <input type="text" class="add-prod-input" placeholder="Product Title" autofocus required name="ptitle">
                     <label for="prod-pic" id="prod-pic-icon"><img src="Icons/upload pic.png" alt=""><span>Select pictures
                             maximum 5 in jpeg format</span></label>
@@ -279,7 +279,8 @@ My Inventory
          <div class="update-modal-body modal-body">
              <!-- <img src="./Icons/login_shield.svg" width="50" height="50" alt="" /> -->
              <form action="UpdateProductDetailsServlet" class="update">
-                 <select name="uppid" class="update-input" id="pidselectbox" onchange="showProductDetails()">
+                 <select name="uppid" class="update-input" id="pid-update-selectbox" onchange="showProductDetails()">
+                      <option value="-1">Select Product Id</option>
                     <%
                         for(int pid:pidlist)
                         {
@@ -290,7 +291,7 @@ My Inventory
                     %>
                 </select>
                  <input type="text" placeholder="Product Name" name="uppname" class="update-input" id="uppname" required/>
-                 <input type="text" placeholder="Product Description" name="updesc" class="update-input" id="updesc" required/>
+                 <textarea  placeholder="Product Description" name="updesc" class="update-input" id="updesc" required/></textarea>
                  <input type="number" placeholder="Price" name="upprice" class="update-input" id="upprice" required/>
                  <input type="number" placeholder="Quantity" name="upquan" class="update-input" id="upquan" required/>
                  
@@ -300,7 +301,7 @@ My Inventory
                      <label id="close-update-modal-lbl"  for="update-modal-checkbox" >
                          Close
                      </label>
-                     <input type="submit" id="update-submit-btn" value="Update" />
+                     <input type="submit" id="update-submit-btn" value="Update" disabled/>
                  </div>
              </form>
          </div>
@@ -333,7 +334,8 @@ My Inventory
             <!-- <img src="./Icons/login_shield.svg" width="50" height="50" alt="" /> -->
             
             <form action="DiscountProductServlet" class="discount">
-                <select name="dpid" class="disc-input" id="pidselectbox">
+                <select name="dpid" class="disc-input" id="pid-discount-selectbox" onchange="enableDiscBtn()">
+                    <option value="-1">Select Product Id</option>
                     <%
                         for(int pid:pidlist)
                         {
@@ -350,7 +352,7 @@ My Inventory
                     <label id="close-disc-prod-modal-lbl"  for="disc-prod-modal-checkbox" >
                         Close
                     </label>
-                    <input type="submit" id="disc-prod-submit-btn" value="Update" />
+                    <input type="submit" id="disc-prod-submit-btn" value="Discount Product" disabled />
                 </div>
             </form>
         </div>
@@ -470,32 +472,64 @@ My Inventory
 
             document.querySelector('.img-prev-container').innerHTML = prevImg();
             var myfiles = input.files;
-            console.log("file len= " + myfiles.length);
+//            console.log("file len= " + myfiles.length);
             if (images.length == 0) {
                 document.getElementById('prod-pic-icon').style.display = "flex";
                 input.value = "";
-                console.log(input.value);
+//                console.log(input.value);
             }
         }
         
         
         function showProductDetails()
         {
-           var pidfrombox=document.getElementById("pidselectbox").value;
-           
+           var pidfrombox=document.getElementById("pid-update-selectbox").value;
+           var update_btn=document.getElementById("update-submit-btn");
            var name=document.getElementById("uppname");
            var desc=document.getElementById("updesc");
            var price=document.getElementById("upprice");
            var quantity=document.getElementById("upquan");
            var index=productlist.findIndex((e)=>e.pid==pidfrombox);
            var product=productlist[index];
+           if(pidfrombox==='-1')
+           {
+                name.value="";
+           desc.value="";
+           price.value="";
+           quantity.value="";
+           update_btn.disabled=true;
+           update_btn.style.backgroundColor="#5a9cfe";
+           return;
+           }
+           
            name.value=product.name;
            desc.value=product.description;
            price.value=product.price;
            quantity.value=product.quantity;
+           update_btn.disabled=false;
+           update_btn.style.backgroundColor="#0d6efd";
             
         }
        
+       
+       
+       function enableDiscBtn()
+       {
+           var pidboxval=document.getElementById("pid-discount-selectbox").value;
+//           console.log("pid value= "+pidboxval);
+           var discbtn=document.getElementById("disc-prod-submit-btn");
+           
+           if(pidboxval==='-1')
+           {
+               discbtn.disabled=true;
+               discbtn.style.backgroundColor="#5a9cfe";
+//               console.log("inside");
+               return;
+           }
+           discbtn.disabled=false;
+           discbtn.style.backgroundColor="#0d6efd";
+//           console.log("outside");
+       }
 
     </script>
 

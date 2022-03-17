@@ -19,6 +19,24 @@ import java.util.ArrayList;
  */
 public class ProductDAO {
     
+    
+    public static int getNewProductId()
+    {
+        int pid=0;
+         try{
+             Connection conn=DBConnection.getConnection();
+         PreparedStatement ps1=conn.prepareStatement("select max(pid) from products limit 1");
+         
+         ResultSet rs=ps1.executeQuery();
+         rs.next();
+         pid=rs.getInt(1);
+             System.out.println(" in get new id method pcount= "+pid);
+         
+        }catch(Exception ex)
+        {ex.printStackTrace();}
+        return pid++;
+    }
+    
     public static int getProductCount()
     {
         int pcount=0;
@@ -123,6 +141,7 @@ public class ProductDAO {
             Connection conn=DBConnection.getConnection();
          PreparedStatement ps1=conn.prepareStatement("update products set pdisc=?");
          ps1.setInt(1, perc);
+         ps1.executeUpdate();
         }catch(Exception ex){ex.printStackTrace();return false;}
         return true;
     }
@@ -130,12 +149,13 @@ public class ProductDAO {
     
      
     public static boolean discountProductAt(int perc,int pid)
-    {
+    {System.out.println("At discount product method");
         try{
             Connection conn=DBConnection.getConnection();
          PreparedStatement ps1=conn.prepareStatement("update products set pdisc=? where pid=?");
          ps1.setInt(1, perc);
          ps1.setInt(2, pid);
+         ps1.executeUpdate();
         }catch(Exception ex){ex.printStackTrace();return false;}
         return true;
     }
