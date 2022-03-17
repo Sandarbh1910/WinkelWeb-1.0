@@ -239,7 +239,8 @@ My Inventory
                     <input type="text" name="pprice" class="add-prod-input" placeholder="Price" required>
                     <input type="text" name="pdisc" class="add-prod-input" placeholder="Discount" required>
                     <input type="text" name="pquant" class="add-prod-input" placeholder="Quantity" required>
-                    <select name="pcat" class="add-prod-input" id="" required>
+                    <select name="pcat" class="add-prod-input" id="cat-add-prod-selectbox" onchange="enableSubmitBtn('addprod')" required>
+                        <option value="-1">Select Category</option>
                     <%ArrayList<CategoryPOJO>catlist=CategoryDAO.loadCategory();
             if(catlist!=null)
             {
@@ -254,7 +255,7 @@ My Inventory
             }
             %>
                     </select>
-                    <input type="submit" id="add-prod-submit-btn" value="Add Product">
+                    <input type="submit" id="add-prod-submit-btn" value="Add Product" disabled>
                 </form>
 </div>
 </div>
@@ -277,7 +278,7 @@ My Inventory
          <hr>
 
          <div class="update-modal-body modal-body">
-             <!-- <img src="./Icons/login_shield.svg" width="50" height="50" alt="" /> -->
+             
              <form action="UpdateProductDetailsServlet" class="update">
                  <select name="uppid" class="update-input" id="pid-update-selectbox" onchange="showProductDetails()">
                       <option value="-1">Select Product Id</option>
@@ -331,10 +332,10 @@ My Inventory
         <hr>
 
         <div class="disc-prod-modal-body modal-body">
-            <!-- <img src="./Icons/login_shield.svg" width="50" height="50" alt="" /> -->
+            
             
             <form action="DiscountProductServlet" class="discount">
-                <select name="dpid" class="disc-input" id="pid-discount-selectbox" onchange="enableDiscBtn()">
+                <select name="dpid" class="disc-input" id="pid-discount-selectbox" onchange="enableSubmitBtn('discount')">
                     <option value="-1">Select Product Id</option>
                     <%
                         for(int pid:pidlist)
@@ -382,7 +383,7 @@ My Inventory
         <hr>
 
         <div class="disc-all-prod-modal-body modal-body">
-            <!-- <img src="./Icons/login_shield.svg" width="50" height="50" alt="" /> -->
+            
             <form action="DiscountAllProductsServlet" class="discount-all">
                 <input type="number" placeholder="%" name="disc-all-per" class="disc-input" id="disc-all-per" required/>
                 
@@ -513,22 +514,38 @@ My Inventory
        
        
        
-       function enableDiscBtn()
-       {
+       function enableSubmitBtn(forbox)
+       {console.log(forbox);
+           if(forbox==='discount'){
+           //For Discount Product
            var pidboxval=document.getElementById("pid-discount-selectbox").value;
-//           console.log("pid value= "+pidboxval);
            var discbtn=document.getElementById("disc-prod-submit-btn");
            
            if(pidboxval==='-1')
            {
                discbtn.disabled=true;
                discbtn.style.backgroundColor="#5a9cfe";
-//               console.log("inside");
+
                return;
            }
            discbtn.disabled=false;
            discbtn.style.backgroundColor="#0d6efd";
-//           console.log("outside");
+       }
+       
+       else if(forbox==='addprod'){
+           //For Add Product
+           var catboxval=document.getElementById("cat-add-prod-selectbox").value;
+           var addprodbtn=document.getElementById("add-prod-submit-btn");
+           
+           if(catboxval==='-1')
+           {
+               addprodbtn.disabled=true;
+               addprodbtn.style.backgroundColor='#5a9cfe';
+               return;
+           }
+           addprodbtn.disabled=false;
+           addprodbtn.style.backgroundColor="#0d6efd";
+           }
        }
 
     </script>

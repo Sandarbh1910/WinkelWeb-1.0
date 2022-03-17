@@ -23,9 +23,11 @@ import javax.servlet.http.Part;
 /**
  *
  * @author sanda
- */@javax.servlet.annotation.MultipartConfig(fileSizeThreshold=1024 * 1024 * 2 //2 MB
-         ,maxFileSize=1024 * 1024 * 10 //10MB
-         )
+ */
+@javax.servlet.annotation.MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2 //2 MB
+        ,
+         maxFileSize = 1024 * 1024 * 10 //10MB
+)
 public class AddProductServlet extends HttpServlet {
 
     /**
@@ -40,98 +42,96 @@ public class AddProductServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8;multipart/form-data");
-        HttpSession httpsess=request.getSession();
-        try  {
-           String ptitle=request.getParameter("ptitle");
-           String pdesc=request.getParameter("pdesc");
-           int pprice=Integer.parseInt(request.getParameter("pprice"));
-           int pdisc=Integer.parseInt(request.getParameter("pdisc"));
-           int pquant=Integer.parseInt(request.getParameter("pquant"));
-           String pcat=request.getParameter("pcat");
-           String seller=((UserCredentialsPOJO)httpsess.getAttribute("current_user")).getUsid();
-           ProductsPOJO prod=new ProductsPOJO(ptitle,pdesc,null,pprice,pdisc,pquant);
-           boolean val=Validation.addProductDataEmptyValidation(prod);
-           if(!val)
-           {
-               httpsess.setAttribute("message","Please fill all the fields!");
-               httpsess.setAttribute("dcol","1");
-               response.sendRedirect("merchant.jsp");
-               return;
-           }
-            System.out.println("In add prod servlet= "+prod+"  "+pcat+"  "+seller);
+        HttpSession httpsess = request.getSession();
+        try {
+            String ptitle = request.getParameter("ptitle");
+            String pdesc = request.getParameter("pdesc");
+            int pprice = Integer.parseInt(request.getParameter("pprice"));
+            int pdisc = Integer.parseInt(request.getParameter("pdisc"));
+            int pquant = Integer.parseInt(request.getParameter("pquant"));
+            String pcat = request.getParameter("pcat");
+            String seller = ((UserCredentialsPOJO) httpsess.getAttribute("current_user")).getUsid();
+            ProductsPOJO prod = new ProductsPOJO(ptitle, pdesc, null, pprice, pdisc, pquant);
+            boolean val = Validation.addProductDataEmptyValidation(prod);
+
+            if (!val) {
+                httpsess.setAttribute("message", "Please fill all the fields!");
+                httpsess.setAttribute("dcol", "1");
+                response.sendRedirect("merchant.jsp");
+                return;
+            }
+            System.out.println("In add prod servlet= " + prod + "  " + pcat + "  " + seller);
+
 //            Saving Product Image
-              Collection<Part>prodPics=request.getParts();
-              System.out.println("ProdPics "+prodPics);
-              String path="";
-              String filepath="";
-              String filename="";
-              
-              System.out.println("Path before = "+request.getRealPath("ProductImages"));
-              System.out.println("File separator "+File.separator);
-              System.out.println("Product id= "+ProductDAO.getNewProductId());
-               path=request.getRealPath("ProductImages")+File.separator+"Product"+ProductDAO.getNewProductId();
-              System.out.println("Path after = "+path);
-              for(Part pic:prodPics)
-              {System.out.println("PIC= "+pic);
-              filepath=""+path;
-              
-                  System.out.println("filename= "+pic.getSubmittedFileName());
-                  filename=pic.getSubmittedFileName();
-                  if(filename!=null)
-                  {
-//                     
-                  File f=new File(path);
-                  if(!f.exists())
-                  f.mkdir();
-                             filepath=filepath.concat(File.separator+filename);
-                  
-                  f.setWritable(true);
-                  System.out.println("filePath= "+filepath);
-                  
-                  UploadData.uploadData(filepath,pic.getInputStream());}
-              }
+            Collection<Part> prodPics = request.getParts();
 
+            System.out.println("ProdPics " + prodPics);
+            String path = "";
+            String filepath = "";
+            String filename = "";
 
+            path = request.getRealPath("ProductImages") + File.separator + "Product" + ProductDAO.getNewProductId();
+            System.out.println("Path after = " + path);
+            boolean isUploaded = false;
+            for (Part pic : prodPics) {
+                System.out.println("PIC= " + pic);
+                filepath = "" + path;
 
+                filename = pic.getSubmittedFileName();
+                System.out.println("Filename= " + filename);
 
+                if (filename != null && filename.length() != 0) {
 
+                    File f = new File(path);
+                    if (!f.exists()) {
+                        f.mkdir();
+                    }
+                    filepath = filepath.concat(File.separator + filename);
+                    f.setWritable(true);
+                    System.out.println("filePath= " + filepath);
 
+                    isUploaded = UploadData.uploadData(filepath, pic.getInputStream());
+                }
 
+            }
+
+            if (!isUploaded) {
+                httpsess.setAttribute("message", "Please attach product images");
+                httpsess.setAttribute("dcol", "1");
+                System.out.println("Inside not upload");
+                return;
+            }
 
 //            Saving Product Details
-           String res=ProductDAO.addProduct(prod,pcat,seller);
-           
-           
-           if(res.equalsIgnoreCase("Product Added Successfully!"))
-           {
-               httpsess.setAttribute("message",res);
-               httpsess.setAttribute("dcol","2");
-              
-           }
-           else if(res.equalsIgnoreCase("Product already exists!"))
-           {
-               httpsess.setAttribute("message",res);
-               httpsess.setAttribute("dcol","1");
-              
-           }
-           else{
-               httpsess.setAttribute("message",res);
-               httpsess.setAttribute("dcol","0");
-              
-           }
-           
-           
-        }catch(NumberFormatException ex1){
-        ex1.printStackTrace();
-         httpsess.setAttribute("message","Please enter valid input");
-               httpsess.setAttribute("dcol","1");
-              
-        }catch(Exception ex){ex.printStackTrace();
-         httpsess.setAttribute("message","Some error occured .Try after some time.");
-               httpsess.setAttribute("dcol","0");
-               }
-         finally{response.sendRedirect("merchant.jsp");
-               return;}
+            String res = ProductDAO.addProduct(prod, pcat, seller);
+
+            if (res.equalsIgnoreCase("Product Added Successfully!")) {
+                httpsess.setAttribute("message", res);
+                httpsess.setAttribute("dcol", "2");
+
+            } else if (res.equalsIgnoreCase("Product already exists!")) {
+                httpsess.setAttribute("message", res);
+                httpsess.setAttribute("dcol", "1");
+
+            } else {
+                httpsess.setAttribute("message", res);
+                httpsess.setAttribute("dcol", "0");
+
+            }
+
+        } catch (NumberFormatException ex1) {
+            ex1.printStackTrace();
+            httpsess.setAttribute("message", "Please enter valid input");
+            httpsess.setAttribute("dcol", "1");
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            httpsess.setAttribute("message", "Some error occured .Try after some time.");
+            httpsess.setAttribute("dcol", "0");
+        } finally {
+            response.sendRedirect("merchant.jsp");
+            return;
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
