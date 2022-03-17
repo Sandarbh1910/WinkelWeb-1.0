@@ -90,7 +90,7 @@ public class ProductDAO {
          PreparedStatement ps1=conn.prepareStatement("select * from products");
          ResultSet rs=ps1.executeQuery();
          while(rs.next())
-         {ProductsPOJO p=new ProductsPOJO(rs.getString("pid"),rs.getString("ptitle"),rs.getString("pdesc"),rs.getString("ppic"),rs.getInt("pprice"),rs.getInt("pdisc"),rs.getInt("pquant"));
+         {ProductsPOJO p=new ProductsPOJO(rs.getString("pid"),rs.getString("pbrand"),rs.getString("ptitle"),rs.getString("pdesc"),rs.getString("ppic"),rs.getInt("pprice"),rs.getInt("pdisc"),rs.getInt("pquant"));
              prodlist.add(p);
          }
         }catch(Exception ex)
@@ -106,7 +106,7 @@ public class ProductDAO {
          ps1.setInt(1, pid);
          ResultSet rs=ps1.executeQuery();
          rs.next();
-         product=new ProductsPOJO(rs.getString("pid"),rs.getString("ptitle"),rs.getString("pdesc"),rs.getString("ppic"),rs.getInt("pprice"),rs.getInt("pdisc"),rs.getInt("pquant"));
+         product=new ProductsPOJO(rs.getString("pid"),rs.getString("pbrand"),rs.getString("ptitle"),rs.getString("pdesc"),rs.getString("ppic"),rs.getInt("pprice"),rs.getInt("pdisc"),rs.getInt("pquant"));
           
          
         }catch(Exception ex)
@@ -119,12 +119,13 @@ public class ProductDAO {
     {
         try{
              Connection conn=DBConnection.getConnection();
-         PreparedStatement ps1=conn.prepareStatement("update products set ptitle=?,pdesc=?,pprice=?,pquant=? where pid=?");
-         ps1.setString(1, p.getpTitle());
-         ps1.setString(2, p.getpDesc());
-         ps1.setInt(3, p.getpPrice());
-         ps1.setInt(4, p.getpQuant());
-         ps1.setInt(5, pid);
+         PreparedStatement ps1=conn.prepareStatement("update products set pbrand=?,ptitle=?,pdesc=?,pprice=?,pquant=? where pid=?");
+          ps1.setString(1, p.getPbrand());
+         ps1.setString(2, p.getpTitle());
+         ps1.setString(3, p.getpDesc());
+         ps1.setInt(4, p.getpPrice());
+         ps1.setInt(5, p.getpQuant());
+         ps1.setInt(6, pid);
          ps1.executeUpdate();
          
          
@@ -165,15 +166,16 @@ public class ProductDAO {
     {
         try{
              Connection conn=DBConnection.getConnection();
-         PreparedStatement ps1=conn.prepareStatement("insert into products (ptitle,pdesc,ppic,pprice,pdisc,pquant,cattitle,pseller)values(?,?,?,?,?,?,?,?)");
-         ps1.setString(1, prod.getpTitle());
-         ps1.setString(2,prod.getpDesc());
-         ps1.setString(3,prod.getpPic());
-         ps1.setInt(4,prod.getpPrice());
-         ps1.setInt(5,prod.getpDisc());
-         ps1.setInt(6,prod.getpQuant());
-         ps1.setString(7,cat);
-         ps1.setString(8,seller);
+         PreparedStatement ps1=conn.prepareStatement("insert into products (pbrand,ptitle,pdesc,ppic,pprice,pdisc,pquant,cattitle,pseller)values(?,?,?,?,?,?,?,?,?)");
+         ps1.setString(1, prod.getPbrand());
+         ps1.setString(2, prod.getpTitle());
+         ps1.setString(3,prod.getpDesc());
+         ps1.setString(4,prod.getpPic());
+         ps1.setInt(5,prod.getpPrice());
+         ps1.setInt(6,prod.getpDisc());
+         ps1.setInt(7,prod.getpQuant());
+         ps1.setString(8,cat);
+         ps1.setString(9,seller);
          ps1.executeUpdate();
          
         }catch(SQLIntegrityConstraintViolationException ex1){

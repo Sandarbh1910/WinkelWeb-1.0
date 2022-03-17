@@ -136,6 +136,7 @@
                     for (int i = 0; i < prodlist.size(); i++) {
                 %>
                 productlist[<%=i%>] = {"pid": "<%=prodlist.get(i).getpId()%>",
+                    "brand":"<%=prodlist.get(i).getPbrand()%>",
                     "name": "<%=prodlist.get(i).getpTitle()%>",
                     "description": "<%=prodlist.get(i).getpDesc()%>",
                     "price": "<%=prodlist.get(i).getpPrice()%>",
@@ -273,7 +274,8 @@
 
                 <div class="add-prod-page-body">
                     <form action="AddProductServlet" id="add-prod-form" enctype="multipart/form-data" method="POST">
-                        <input type="text" class="add-prod-input" placeholder="Product Title" autofocus required name="ptitle">
+                        <input type="text" class="add-prod-input" placeholder="Brand Name" autofocus required name="pbrand">
+                        <input type="text" class="add-prod-input" placeholder="Product Title"  required name="ptitle">
                         <label for="prod-pic" id="prod-pic-icon"><img src="Icons/upload pic.png" alt=""><span>Select pictures
                                 maximum 5 in jpeg format</span></label>
 
@@ -334,6 +336,7 @@
                                 }
                             %>
                         </select>
+                        <input type="text" placeholder="Brand Name" name="uppbrand" class="update-input" id="uppbrand" required/>
                         <input type="text" placeholder="Product Name" name="uppname" class="update-input" id="uppname" required/>
                         <textarea  placeholder="Product Description" name="updesc" class="update-input" id="updesc" required/></textarea>
                         <input type="number" placeholder="Price" name="upprice" class="update-input" id="upprice" required/>
@@ -535,6 +538,7 @@
             {
                 var pidfrombox = document.getElementById("pid-update-selectbox").value;
                 var update_btn = document.getElementById("update-submit-btn");
+                var brand=document.getElementById("uppbrand");
                 var name = document.getElementById("uppname");
                 var desc = document.getElementById("updesc");
                 var price = document.getElementById("upprice");
@@ -543,6 +547,7 @@
                 var product = productlist[index];
                 if (pidfrombox === '-1')
                 {
+                    brand.value="";
                     name.value = "";
                     desc.value = "";
                     price.value = "";
@@ -551,7 +556,7 @@
                     update_btn.style.backgroundColor = "#5a9cfe";
                     return;
                 }
-
+                brand.value=product.brand;
                 name.value = product.name;
                 desc.value = product.description;
                 price.value = product.price;

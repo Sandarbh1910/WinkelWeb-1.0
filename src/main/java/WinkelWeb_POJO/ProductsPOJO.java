@@ -11,44 +11,65 @@ package WinkelWeb_POJO;
  */
 public class ProductsPOJO {
     private String pId;
+    private String pbrand;
     private String pTitle;
-
-    public ProductsPOJO(String pTitle, String pDesc, int pPrice, int pQuant) {
-        this.pTitle = pTitle;
-        this.pDesc = pDesc;
-        this.pPrice = pPrice;
-        this.pQuant = pQuant;
-    }
     private String pDesc;
     private String pPic;
     private int    pPrice;
     private int    pDisc;
     private int    pQuant;
-
-    public ProductsPOJO(String pId, String pTitle, String pDesc, String pPic, int pPrice, int pDisc, int pQuant) {
-        this.pId = pId;
-        this.pTitle = pTitle;
-        this.pDesc = pDesc;
-        this.pPic = pPic;
-        this.pPrice = pPrice;
-        this.pDisc = pDisc;
-        this.pQuant = pQuant;
-    }
-
-    public ProductsPOJO( String pTitle, String pDesc, String pPic, int pPrice, int pDisc, int pQuant) {
-       
-        this.pTitle = pTitle;
-        this.pDesc = pDesc;
-        this.pPic = pPic;
-        this.pPrice = pPrice;
-        this.pDisc = pDisc;
-        this.pQuant = pQuant;
-    }
-
+    
+    
+    
+    
     @Override
     public String toString() {
-        return "ProductsPOJO{" + "pId=" + pId + ", pTitle=" + pTitle + ", pDesc=" + pDesc + ", pPic=" + pPic + ", pPrice=" + pPrice + ", pDisc=" + pDisc + ", pQuant=" + pQuant + '}';
+        return "ProductsPOJO{" + "pId=" + pId + ", pbrand=" + pbrand + ", pTitle=" + pTitle + ", pDesc=" + pDesc + ", pPic=" + pPic + ", pPrice=" + pPrice + ", pDisc=" + pDisc + ", pQuant=" + pQuant + '}';
     }
+   
+    
+    
+    
+    
+    public ProductsPOJO(String pbrand,String pTitle, String pDesc, int pPrice, int pQuant) {
+        this.pbrand=pbrand;
+        this.pTitle = pTitle;
+        this.pDesc = pDesc;
+        this.pPrice = pPrice;
+        this.pQuant = pQuant;
+    }
+    
+
+    public ProductsPOJO(String pId,String pbrand, String pTitle, String pDesc, String pPic, int pPrice, int pDisc, int pQuant) {
+        this.pId = pId;
+        this.pbrand=pbrand;
+        this.pTitle = pTitle;
+        this.pDesc = pDesc;
+        this.pPic = pPic;
+        this.pPrice = pPrice;
+        this.pDisc = pDisc;
+        this.pQuant = pQuant;
+    }
+
+    public ProductsPOJO( String pbrand,String pTitle, String pDesc, String pPic, int pPrice, int pDisc, int pQuant) {
+        this.pbrand=pbrand;
+        this.pTitle = pTitle;
+        this.pDesc = pDesc;
+        this.pPic = pPic;
+        this.pPrice = pPrice;
+        this.pDisc = pDisc;
+        this.pQuant = pQuant;
+    }
+
+    public String getPbrand() {
+        return pbrand;
+    }
+
+    public void setPbrand(String pbrand) {
+        this.pbrand = pbrand;
+    }
+
+   
     public String getpId() {
         return pId;
     }

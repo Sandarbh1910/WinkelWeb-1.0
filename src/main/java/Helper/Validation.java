@@ -49,11 +49,7 @@ public class Validation {
         char ch=mob.charAt(0);
         if(mob.length()==10)
         {
-//            if((ch=='9')&&mob.length()<=10)
-//        { return true;}
-//        else if(ch=='8'){return true;}
-//        else if(ch=='7'){return true;}
-//        else if(ch=='6'){return true;}
+
             
             if(ch=='9'||ch=='8'||ch=='7'||ch=='6')
             {
@@ -95,7 +91,7 @@ public class Validation {
     
     public static boolean addProductDataEmptyValidation(ProductsPOJO prod)
     {
-        if(prod.getpTitle().isEmpty()||prod.getpDesc().isEmpty()||prod.getpPrice()==0||prod.getpQuant()==0||prod.getpDisc()==0)
+        if(prod.getPbrand().isEmpty()||prod.getpTitle().isEmpty()||prod.getpDesc().isEmpty()||prod.getpPrice()==0||prod.getpQuant()==0||prod.getpDisc()==0)
         {
             return false;
         }

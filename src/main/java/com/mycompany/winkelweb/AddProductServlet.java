@@ -44,6 +44,7 @@ public class AddProductServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8;multipart/form-data");
         HttpSession httpsess = request.getSession();
         try {
+            String pbrand=request.getParameter("pbrand");
             String ptitle = request.getParameter("ptitle");
             String pdesc = request.getParameter("pdesc");
             int pprice = Integer.parseInt(request.getParameter("pprice"));
@@ -51,7 +52,7 @@ public class AddProductServlet extends HttpServlet {
             int pquant = Integer.parseInt(request.getParameter("pquant"));
             String pcat = request.getParameter("pcat");
             String seller = ((UserCredentialsPOJO) httpsess.getAttribute("current_user")).getUsid();
-            ProductsPOJO prod = new ProductsPOJO(ptitle, pdesc, null, pprice, pdisc, pquant);
+            ProductsPOJO prod = new ProductsPOJO(pbrand,ptitle, pdesc, null, pprice, pdisc, pquant);
             boolean val = Validation.addProductDataEmptyValidation(prod);
 
             if (!val) {
