@@ -79,6 +79,28 @@ public class CategoryDAO {
     }
     
     
+     public static ArrayList<String>loadCategoryNames()
+    {
+        ArrayList<String> arr=null;
+        try{
+            
+            Connection conn=DBConnection.getConnection();
+            Statement st=conn.createStatement();
+            ResultSet rs=st.executeQuery("select * from category");
+            arr=new ArrayList<String>();
+            while(rs.next())
+            {
+                
+                arr.add(rs.getString("cattitle"));
+            }
+            
+            
+        }catch(Exception ex){
+            ex.printStackTrace();}
+        return arr;
+    }
+    
+    
     public static boolean deleteCategory(String del_cat)
     {
         try{
