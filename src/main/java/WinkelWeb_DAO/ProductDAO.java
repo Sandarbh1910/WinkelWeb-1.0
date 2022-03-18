@@ -83,14 +83,15 @@ public class ProductDAO {
     
     public static ArrayList<ProductsPOJO> getProducts()
     {
-        ArrayList<ProductsPOJO>prodlist=new ArrayList<ProductsPOJO>();
+        ArrayList<ProductsPOJO>prodlist=null;
         
         try{
              Connection conn=DBConnection.getConnection();
          PreparedStatement ps1=conn.prepareStatement("select * from products");
          ResultSet rs=ps1.executeQuery();
+         prodlist=new ArrayList<ProductsPOJO>();
          while(rs.next())
-         {ProductsPOJO p=new ProductsPOJO(rs.getString("pid"),rs.getString("pbrand"),rs.getString("ptitle"),rs.getString("pdesc"),rs.getString("ppic"),rs.getInt("pprice"),rs.getInt("pdisc"),rs.getInt("pquant"));
+         {ProductsPOJO p=new ProductsPOJO(rs.getString("pid"),rs.getString("pbrand"),rs.getString("ptitle"),rs.getString("pdesc"),rs.getString("ppic"),rs.getInt("pprice"),rs.getInt("pdisc"),rs.getInt("pquant"),rs.getString("cattitle"));
              prodlist.add(p);
          }
         }catch(Exception ex)
@@ -99,6 +100,25 @@ public class ProductDAO {
     }
     
     
+    public static ArrayList<ProductsPOJO>getProductsOfCategory(String cat)
+    {
+         ArrayList<ProductsPOJO>prodlist=null;
+        
+        try{
+             Connection conn=DBConnection.getConnection();
+         PreparedStatement ps1=conn.prepareStatement("select * from products where cattitle=?");
+         ps1.setString(1, cat);
+         ResultSet rs=ps1.executeQuery();
+         prodlist=new ArrayList<ProductsPOJO>();
+         while(rs.next())
+         {ProductsPOJO p=new ProductsPOJO(rs.getString("pid"),rs.getString("pbrand"),rs.getString("ptitle"),rs.getString("pdesc"),rs.getString("ppic"),rs.getInt("pprice"),rs.getInt("pdisc"),rs.getInt("pquant"),rs.getString("cattitle"));
+             prodlist.add(p);
+         }
+        }catch(Exception ex)
+        {ex.printStackTrace();}
+        return prodlist;
+    }
+    
     public static ProductsPOJO getProductDetails(int pid)
     {ProductsPOJO product=null;
         try{Connection conn=DBConnection.getConnection();
@@ -106,7 +126,7 @@ public class ProductDAO {
          ps1.setInt(1, pid);
          ResultSet rs=ps1.executeQuery();
          rs.next();
-         product=new ProductsPOJO(rs.getString("pid"),rs.getString("pbrand"),rs.getString("ptitle"),rs.getString("pdesc"),rs.getString("ppic"),rs.getInt("pprice"),rs.getInt("pdisc"),rs.getInt("pquant"));
+         product=new ProductsPOJO(rs.getString("pid"),rs.getString("pbrand"),rs.getString("ptitle"),rs.getString("pdesc"),rs.getString("ppic"),rs.getInt("pprice"),rs.getInt("pdisc"),rs.getInt("pquant"),rs.getString("cattitle"));
           
          
         }catch(Exception ex)
@@ -114,6 +134,25 @@ public class ProductDAO {
         return product;
     }
     
+    
+    public static ArrayList<ProductsPOJO> getProductsInSellersInventory(String seller)
+    {
+         ArrayList<ProductsPOJO>prodlist=null;
+        
+        try{
+             Connection conn=DBConnection.getConnection();
+         PreparedStatement ps1=conn.prepareStatement("select * from products where pseller=? order by cattitle desc");
+         ps1.setString(1, seller);
+         ResultSet rs=ps1.executeQuery();
+         prodlist=new ArrayList<ProductsPOJO>();
+         while(rs.next())
+         {ProductsPOJO p=new ProductsPOJO(rs.getString("pid"),rs.getString("pbrand"),rs.getString("ptitle"),rs.getString("pdesc"),rs.getString("ppic"),rs.getInt("pprice"),rs.getInt("pdisc"),rs.getInt("pquant"),rs.getString("cattitle"));
+             prodlist.add(p);
+         }
+        }catch(Exception ex)
+        {ex.printStackTrace();}
+        return prodlist;
+    }
     
     public static String updateProductDetails(ProductsPOJO p,int pid)
     {
@@ -185,5 +224,21 @@ public class ProductDAO {
             ex.printStackTrace();
         return "Could not add product!";}
         return "Product Added Successfully!";
+    }
+    
+    
+    public static String deleteProducts(String pid)
+    {
+        try{
+             Connection conn=DBConnection.getConnection();
+         PreparedStatement ps1=conn.prepareStatement("delete from products where pid in ("+pid+")");
+         
+         ps1.executeUpdate();
+         
+        }
+        catch(Exception ex){
+            ex.printStackTrace();
+        return "Could not add product!";}
+        return "Product deleted Successfully!";
     }
 }

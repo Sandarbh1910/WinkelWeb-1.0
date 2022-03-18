@@ -18,6 +18,15 @@ public class ProductsPOJO {
     private int    pPrice;
     private int    pDisc;
     private int    pQuant;
+    private String pcat;
+
+    public String getPcat() {
+        return pcat;
+    }
+
+    public void setPcat(String pcat) {
+        this.pcat = pcat;
+    }
     
     
     
@@ -40,7 +49,8 @@ public class ProductsPOJO {
     }
     
 
-    public ProductsPOJO(String pId,String pbrand, String pTitle, String pDesc, String pPic, int pPrice, int pDisc, int pQuant) {
+    public ProductsPOJO(String pId,String pbrand, String pTitle, String pDesc, String pPic, int pPrice, int pDisc, int pQuant,String pcat) {
+        this.pcat=pcat;
         this.pId = pId;
         this.pbrand=pbrand;
         this.pTitle = pTitle;

@@ -9,7 +9,7 @@
 
 <%
     UserCredentialsPOJO user = (UserCredentialsPOJO) session.getAttribute("current_user");
-
+     String disp_prod="";
     if (user != null) {
         if (user.getUser_type().equalsIgnoreCase("admin")) {
             session.setAttribute("message", "Unauthorised Access!.Do not try that again.");
@@ -22,6 +22,7 @@
             response.sendRedirect("customer.jsp");
             return;
         }
+         disp_prod=request.getParameter("disp-prod");
 
     } else {
         session.setAttribute("message", "Login Required!");
@@ -108,7 +109,7 @@
                         <ul>
                             <li class="sideuserlistitem"><a href="">Setting</a></li>
                             <li class="sideuserlistitem" style="border-bottom: 2px solid #e1e1e2;"><a href="">Profile</a></li>
-                            <li class="sideuserlistitem"><a href="">Sign out</a></li>
+                            <li class="sideuserlistitem"><a href="LogoutServlet">Sign out</a></li>
                         </ul>
                     </div>
                 </div>
@@ -124,8 +125,19 @@
 
             <%
                 ArrayList<Integer> pidlist = ProductDAO.loadPid(user.getUsid());
-                ArrayList<ProductsPOJO> prodlist = ProductDAO.getProducts();
+               
                 ArrayList<String> catlist = CategoryDAO.loadCategoryNames();
+                
+                ArrayList<ProductsPOJO>invprodlist=ProductDAO.getProductsInSellersInventory(user.getUsid());
+                
+                ArrayList<ProductsPOJO> prodlist=null;
+                if(disp_prod==null||disp_prod.equalsIgnoreCase("all"))
+                {
+                      prodlist= ProductDAO.getProducts();
+                }
+                else{
+                      prodlist=ProductDAO.getProductsOfCategory(disp_prod);
+                }
             %>
 
 
@@ -153,7 +165,7 @@
 
 
             <!-- Business tab Starts here -->
-            <input type="radio"  id="business-tab-radio" name="mytab" checked  onchange="adaptColor()">
+            <input type="radio"  id="business-tab-radio" name="mytab"   onchange="adaptColor()">
             <div class="business-tab-page">
                 <div class="app-stats-bar">
                     <div class="users-stat"> <img src="Icons/customer.png" class="stats-icon" alt="">
@@ -206,16 +218,17 @@
 
 
             <!-- Shopping tab starts here -->
-            <input type="radio" id="shopping-tab-radio" name="mytab">
+            <input type="radio" id="shopping-tab-radio" checked name="mytab">
             <div class="shopping-tab-page">
                 <div class="cat-bar">
+                    <a href="merchant.jsp?disp-prod=all" class="cat-tab">All Products</a>
                    <% if(catlist!=null)
                     {
                         for(String c:catlist)
                         {
                    %>
                    
-                     <span class="cat-tab"><%=c%></span>
+                     <a href="merchant.jsp?disp-prod=<%=c%>" class="cat-tab"><%=c%></a>
                     
                     <%
                         }
@@ -240,7 +253,7 @@
                     <div class="prod-card" onclick="toLocation('product.html')">
                         <img src="" alt="" class="prod-img">
                         <div class="prod-card-body">
-                            <div class="prod-brand-name">Hp</div>
+                            <div class="prod-brand-name"><%=prod.getPbrand()%></div>
                             <div class="prod-name"><%=prod.getpTitle()%></div>
                             <div class="prod-price">&#8377;<%=Calculations.getDiscountedPrice(prod.getpPrice(),prod.getpDisc())%> <span class="prod-oprice">&#8377;<%=prod.getpPrice()%></span> <span class="prod-disc"><%=prod.getpDisc()%>% off</span></div>
                         </div>
@@ -261,7 +274,39 @@
             <!-- Inventory tab starts here -->
             <input type="radio" id="inventory-tab-radio" name="mytab">
             <div class="inventory-tab-page">
-                My Inventory
+                
+                 <form action="DeleteProductsServlet" class="rem-prod-form">
+              <button class="del-prod-from-inventory-btn" type="submit"><img src="Icons/deleteprod.png" alt="Delete Products"></button>
+            <div class="inventory-prod-container">
+                <%
+                        if(invprodlist!=null)
+                        {
+                            for(ProductsPOJO prod:invprodlist)
+                            {
+                                
+                    %>
+                    
+                    
+                    
+                    <div class="prod-card" >
+                        <input type="checkbox" name="del-prod-check" class="del-prod-check" value="<%=prod.getpId()%>" >
+                        <div class="prod-cat-lbl"><%=prod.getPcat()%></div>
+                        <img src="" alt="" class="prod-img">
+                        <div class="prod-card-body">
+                            <div class="prod-brand-name"><%=prod.getPbrand()%></div>
+                            <div class="prod-name"><%=prod.getpTitle()%></div>
+                            <div class="prod-price">&#8377;<%=Calculations.getDiscountedPrice(prod.getpPrice(),prod.getpDisc())%> <span class="prod-oprice">&#8377;<%=prod.getpPrice()%></span> <span class="prod-disc"><%=prod.getpDisc()%>% off</span></div>
+                        </div>
+                    </div>
+                    
+                    <%
+                            }
+                        }
+                    %>
+                 
+                
+                </div>
+           </form>
             </div>
             <!-- Inventory tab ends here -->
 
